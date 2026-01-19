@@ -47,6 +47,9 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    scroll-padding-top: 0;
 }
 
 body {
@@ -204,6 +207,8 @@ a {
     min-height: 100vh;
     padding: 8rem 6rem 4rem;
     position: relative;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
 }
 
 /* Profile Section */
@@ -726,6 +731,7 @@ a {
     text-align: center;
     padding: 3rem;
     background-color: var(--bg-primary);
+    scroll-snap-align: end;
 }
 
 .footer p {
@@ -781,6 +787,10 @@ a {
 }
 
 @media (max-width: 768px) {
+    html {
+        scroll-snap-type: y proximity;
+    }
+
     .navbar {
         padding: 1rem 1.5rem;
     }
