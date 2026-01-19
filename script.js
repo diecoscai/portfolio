@@ -31,6 +31,17 @@ themeToggle.addEventListener('click', () => {
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-link');
 const indicatorLines = document.querySelectorAll('.indicator-line');
+const bottomIndicator = document.getElementById('bottomIndicator');
+const nextSectionName = document.getElementById('nextSectionName');
+const scrollIndicator = document.getElementById('scrollIndicator');
+
+// Section names mapping (current section -> next section name to display)
+const sectionNames = {
+    'profile': 'SHOWCASES',
+    'showcases': 'PROJECTS',
+    'projects': 'CONTACT',
+    'contact': ''
+};
 
 function updateActiveNav() {
     const scrollPosition = window.scrollY + window.innerHeight / 3;
@@ -56,6 +67,15 @@ function updateActiveNav() {
                     line.classList.add('active');
                 }
             });
+
+            // Update bottom section indicator
+            const nextName = sectionNames[sectionId];
+            if (nextName) {
+                nextSectionName.textContent = nextName;
+                bottomIndicator.classList.remove('hidden');
+            } else {
+                bottomIndicator.classList.add('hidden');
+            }
         }
     });
 }
@@ -197,14 +217,12 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Hide scroll indicator after scrolling
-const scrollIndicator = document.querySelector('.scroll-indicator');
-
+// Hide scroll indicator after scrolling (slides down and fades)
 window.addEventListener('scroll', () => {
     if (window.scrollY > 100) {
-        scrollIndicator.style.opacity = '0';
+        scrollIndicator.classList.add('hidden');
     } else {
-        scrollIndicator.style.opacity = '1';
+        scrollIndicator.classList.remove('hidden');
     }
 });
 
