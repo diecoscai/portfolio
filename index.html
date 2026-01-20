@@ -15,7 +15,7 @@
         <a href="#profile" class="logo">Diego<br>Cosca.</a>
         <div class="nav-links">
             <a href="#profile" class="nav-link active">Profile</a>
-            <a href="#showcases" class="nav-link">Showcases</a>
+            <a href="#blog" class="nav-link">Blog</a>
             <a href="#projects" class="nav-link">Projects</a>
             <a href="#contact" class="nav-link">Contact</a>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
@@ -106,73 +106,37 @@
         </div>
     </section>
 
-    <!-- Showcases Section -->
-    <section id="showcases" class="section showcases-section">
-        <div class="section-header">
-            <h2>Showcases.</h2>
-            <p>These are some highlight projects. Each page discusses the purpose of the project, what was learned, and how I came up with solutions.</p>
-        </div>
-
-        <div class="carousel-container">
-            <div class="carousel" id="showcaseCarousel">
-                <div class="carousel-track">
-                    <div class="showcase-card">
-                        <div class="card-image ai-project">
-                            <div class="card-placeholder">
-                                <span>AI</span>
-                            </div>
-                        </div>
-                        <h3>AI Business Integration</h3>
-                        <p>Enterprise AI solution for automating business processes using machine learning and natural language processing.</p>
-                        <a href="#" class="view-project">VIEW PROJECT</a>
-                    </div>
-                    <div class="showcase-card">
-                        <div class="card-image web-project">
-                            <div class="card-placeholder">
-                                <span>Web</span>
-                            </div>
-                        </div>
-                        <h3>E-Commerce Platform</h3>
-                        <p>Full-stack e-commerce solution with real-time inventory, payment processing, and analytics dashboard.</p>
-                        <a href="#" class="view-project">VIEW PROJECT</a>
-                    </div>
-                    <div class="showcase-card">
-                        <div class="card-image ml-project">
-                            <div class="card-placeholder">
-                                <span>ML</span>
-                            </div>
-                        </div>
-                        <h3>Predictive Analytics</h3>
-                        <p>Machine learning pipeline for predictive analytics with automated model training and deployment.</p>
-                        <a href="#" class="view-project">VIEW PROJECT</a>
-                    </div>
-                    <div class="showcase-card">
-                        <div class="card-image mobile-project">
-                            <div class="card-placeholder">
-                                <span>Mobile</span>
-                            </div>
-                        </div>
-                        <h3>Cross-Platform App</h3>
-                        <p>React Native mobile application with offline support, push notifications, and biometric authentication.</p>
-                        <a href="#" class="view-project">VIEW PROJECT</a>
-                    </div>
+    <!-- Blog Section -->
+    <section id="blog" class="section blog-section">
+        <div class="blog-container">
+            <a href="#" class="blog-card life-blog">
+                <div class="blog-card-bg"></div>
+                <div class="blog-card-content">
+                    <h2>Life Blog</h2>
+                    <p>My journey through AI development, personal projects, hobbies, and the experiences that shape my path as a developer.</p>
+                    <span class="blog-card-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </span>
                 </div>
-            </div>
-            <button class="carousel-btn prev" id="prevBtn" aria-label="Previous">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="15,18 9,12 15,6"></polyline>
-                </svg>
-            </button>
-            <button class="carousel-btn next" id="nextBtn" aria-label="Next">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="9,6 15,12 9,18"></polyline>
-                </svg>
-            </button>
-        </div>
-
-        <div class="carousel-dots" id="carouselDots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
+                <div class="blog-card-overlay"></div>
+            </a>
+            <a href="#" class="blog-card tech-blog">
+                <div class="blog-card-bg"></div>
+                <div class="blog-card-content">
+                    <h2>Tech Blog</h2>
+                    <p>Technical tutorials, Claude configurations, AI agents guides, and informative posts about the tools and technologies I use.</p>
+                    <span class="blog-card-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </span>
+                </div>
+                <div class="blog-card-overlay"></div>
+            </a>
         </div>
     </section>
 

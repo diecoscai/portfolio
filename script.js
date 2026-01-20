@@ -37,8 +37,8 @@ const scrollIndicator = document.getElementById('scrollIndicator');
 
 // Section names mapping (current section -> next section name to display)
 const sectionNames = {
-    'profile': 'SHOWCASES',
-    'showcases': 'PROJECTS',
+    'profile': 'BLOG',
+    'blog': 'PROJECTS',
     'projects': 'CONTACT',
     'contact': ''
 };
@@ -83,80 +83,6 @@ function updateActiveNav() {
 window.addEventListener('scroll', updateActiveNav);
 updateActiveNav();
 
-// Carousel Functionality
-const carousel = document.getElementById('showcaseCarousel');
-const carouselTrack = carousel.querySelector('.carousel-track');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-const dots = document.querySelectorAll('.dot');
-
-let currentSlide = 0;
-const totalSlides = 2; // Number of slide positions (pages)
-
-function getCardsPerView() {
-    const width = window.innerWidth;
-    if (width <= 768) return 1;
-    if (width <= 992) return 2;
-    return 4;
-}
-
-function updateCarousel() {
-    const cardsPerView = getCardsPerView();
-    const cards = carouselTrack.querySelectorAll('.showcase-card');
-    const cardWidth = cards[0].offsetWidth;
-    const gap = 24; // 1.5rem gap
-
-    const maxSlide = Math.max(0, Math.ceil(cards.length / cardsPerView) - 1);
-    currentSlide = Math.min(currentSlide, maxSlide);
-
-    const offset = currentSlide * (cardsPerView * (cardWidth + gap));
-    carouselTrack.style.transform = `translateX(-${offset}px)`;
-
-    // Update dots
-    dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentSlide);
-    });
-
-    // Update button states
-    prevBtn.style.opacity = currentSlide === 0 ? '0.5' : '1';
-    nextBtn.style.opacity = currentSlide === maxSlide ? '0.5' : '1';
-}
-
-prevBtn.addEventListener('click', () => {
-    if (currentSlide > 0) {
-        currentSlide--;
-        updateCarousel();
-    }
-});
-
-nextBtn.addEventListener('click', () => {
-    const cardsPerView = getCardsPerView();
-    const cards = carouselTrack.querySelectorAll('.showcase-card');
-    const maxSlide = Math.max(0, Math.ceil(cards.length / cardsPerView) - 1);
-
-    if (currentSlide < maxSlide) {
-        currentSlide++;
-        updateCarousel();
-    }
-});
-
-dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        currentSlide = index;
-        updateCarousel();
-    });
-});
-
-// Update carousel on resize
-let resizeTimeout;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(updateCarousel, 100);
-});
-
-// Initialize carousel
-updateCarousel();
-
 // Smooth scroll for navigation links
 navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
@@ -190,7 +116,7 @@ const animateOnScroll = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Add animation to elements
-document.querySelectorAll('.showcase-card, .project-card').forEach(el => {
+document.querySelectorAll('.blog-card, .project-card').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -198,8 +124,8 @@ document.querySelectorAll('.showcase-card, .project-card').forEach(el => {
 });
 
 // Add staggered animation delay to cards
-document.querySelectorAll('.showcase-card').forEach((card, index) => {
-    card.style.transitionDelay = `${index * 0.1}s`;
+document.querySelectorAll('.blog-card').forEach((card, index) => {
+    card.style.transitionDelay = `${index * 0.15}s`;
 });
 
 document.querySelectorAll('.project-card').forEach((card, index) => {
