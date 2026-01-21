@@ -1,0 +1,17 @@
+---
+// Section indicator sidebar (left side)
+---
+
+<aside class="fixed left-8 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-3">
+  <span class="indicator-line w-8 h-0.5 bg-base-300 transition-all duration-300 active" data-index="0"></span>
+  <span class="indicator-line w-6 h-0.5 bg-base-300 transition-all duration-300" data-index="1"></span>
+  <span class="indicator-line w-6 h-0.5 bg-base-300 transition-all duration-300" data-index="2"></span>
+  <span class="indicator-line w-6 h-0.5 bg-base-300 transition-all duration-300" data-index="3"></span>
+</aside>
+
+<style>
+  .indicator-line.active {
+    width: 2rem;
+    background-color: oklch(var(--color-base-content)) !important;
+  }
+</style>

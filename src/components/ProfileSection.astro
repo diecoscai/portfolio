@@ -1,0 +1,67 @@
+---
+// Profile/Hero section
+---
+
+<section id="profile" class="section py-16 px-6 lg:px-24">
+  <!-- Scroll Indicator -->
+  <div class="fixed left-8 bottom-16 z-50 hidden lg:flex flex-col items-center gap-2 transition-all duration-500" id="scrollIndicator">
+    <span class="writing-mode-vertical text-[0.7rem] tracking-widest text-base-content/50">SCROLL DOWN</span>
+    <div class="scroll-line w-px h-12 bg-gradient-to-b from-base-content/50 to-transparent relative overflow-hidden">
+      <span class="absolute top-[-100%] left-0 w-full h-full bg-gradient-to-b from-transparent via-base-content to-transparent"></span>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto w-full">
+    <!-- Text Content -->
+    <div class="order-2 lg:order-1 text-center lg:text-left">
+      <h1 class="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+        Hello,<br />
+        <span class="text-base-content">My name is Diego</span>
+      </h1>
+      <p class="text-base text-secondary mb-4">
+        I'm currently a Full Stack Developer passionate about building innovative solutions.
+      </p>
+      <p class="text-sm text-base-content/60 mb-3 leading-relaxed">
+        My areas of interest include AI development and integration into business solutions, web development, machine learning, and mobile development.
+      </p>
+      <p class="text-sm text-base-content/60 mb-6 leading-relaxed">
+        With a detail-oriented focus, I enjoy creating simple but effective solutions to improve application performance, ease of maintenance, and user experience.
+      </p>
+      <a href="#" class="inline-block text-sm font-medium underline underline-offset-4 hover:text-primary transition-colors">
+        Get My Resume
+      </a>
+    </div>
+
+    <!-- Profile Image -->
+    <div class="order-1 lg:order-2 flex justify-center">
+      <div class="relative">
+        <div class="w-72 h-96 lg:w-80 lg:h-[420px] bg-base-200 relative z-10">
+          <div class="w-full h-full flex items-center justify-center text-base-content/50">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="w-3/5 h-3/5">
+              <circle cx="50" cy="35" r="20" fill="currentColor" opacity="0.3"/>
+              <ellipse cx="50" cy="85" rx="35" ry="25" fill="currentColor" opacity="0.3"/>
+            </svg>
+          </div>
+        </div>
+        <!-- Decorative blocks -->
+        <div class="absolute top-20 -right-16 w-24 h-80 bg-base-300 z-0"></div>
+        <div class="absolute -bottom-10 -right-16 w-60 h-24 bg-base-300 z-0"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .writing-mode-vertical {
+    writing-mode: vertical-rl;
+  }
+
+  .scroll-line span {
+    animation: scrollDown 1.5s ease-in-out infinite;
+  }
+
+  @keyframes scrollDown {
+    0% { top: -100%; }
+    100% { top: 100%; }
+  }
+</style>

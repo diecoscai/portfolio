@@ -1,0 +1,55 @@
+---
+// Navbar component with theme toggle
+---
+
+<nav class="navbar fixed top-0 left-0 right-0 z-50 bg-base-100 px-6 py-4 lg:px-12 transition-shadow duration-300" id="navbar">
+  <div class="navbar-start">
+    <a href="#profile" class="font-bold text-lg leading-tight">
+      Diego<br />Costa.
+    </a>
+  </div>
+
+  <div class="navbar-end gap-4 lg:gap-8">
+    <a href="#profile" class="nav-link text-sm text-secondary hover:text-base-content transition-colors relative pb-0.5 active" data-section="profile">
+      Profile
+      <span class="nav-underline absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300"></span>
+    </a>
+    <a href="#blog" class="nav-link text-sm text-secondary hover:text-base-content transition-colors relative pb-0.5" data-section="blog">
+      Blog
+      <span class="nav-underline absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300"></span>
+    </a>
+    <a href="#projects" class="nav-link text-sm text-secondary hover:text-base-content transition-colors relative pb-0.5" data-section="projects">
+      Projects
+      <span class="nav-underline absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300"></span>
+    </a>
+    <a href="#contact" class="nav-link text-sm text-secondary hover:text-base-content transition-colors relative pb-0.5" data-section="contact">
+      Contact
+      <span class="nav-underline absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300"></span>
+    </a>
+
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <span class="flex items-center w-11 h-6 bg-base-300 rounded-full relative transition-colors duration-300">
+        <span class="toggle-thumb absolute left-0.5 w-5 h-5 bg-base-content rounded-full transition-transform duration-300"></span>
+      </span>
+    </button>
+  </div>
+</nav>
+
+<style>
+  .nav-link .nav-underline {
+    width: 0;
+  }
+
+  .nav-link:hover .nav-underline,
+  .nav-link.active .nav-underline {
+    width: 100%;
+  }
+
+  .nav-link.active {
+    color: oklch(var(--bc));
+  }
+
+  [data-theme="dark"] .toggle-thumb {
+    transform: translateX(20px);
+  }
+</style>

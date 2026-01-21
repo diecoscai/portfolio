@@ -1,0 +1,115 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* Light theme - white background, black text */
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  color-scheme: light;
+  --color-base-100: oklch(100% 0 0);
+  --color-base-200: oklch(100% 0 0);
+  --color-base-300: oklch(70% 0 0);
+  --color-base-content: oklch(0% 0 0);
+  --color-primary: oklch(59% 0.19 27.2);
+  --color-primary-content: oklch(0% 0 0);
+  --color-secondary: oklch(45% 0 0);
+  --color-secondary-content: oklch(0% 0 0);
+  --color-accent: oklch(59% 0.19 27.2);
+  --color-accent-content: oklch(0% 0 0);
+  --color-neutral: oklch(0% 0 0);
+  --color-neutral-content: oklch(100% 0 0);
+  --color-info: oklch(59% 0.19 27.2);
+  --color-success: oklch(59% 0.19 27.2);
+  --color-warning: oklch(59% 0.19 27.2);
+  --color-error: oklch(59% 0.19 27.2);
+}
+
+/* Dark theme - black background, white text */
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: false;
+  prefersdark: true;
+  color-scheme: dark;
+  --color-base-100: oklch(0% 0 0);
+  --color-base-200: oklch(0% 0 0);
+  --color-base-300: oklch(40% 0 0);
+  --color-base-content: oklch(100% 0 0);
+  --color-primary: oklch(59% 0.19 27.2);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(70% 0 0);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(67% 0.2 25);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(100% 0 0);
+  --color-neutral-content: oklch(0% 0 0);
+  --color-info: oklch(59% 0.19 27.2);
+  --color-success: oklch(59% 0.19 27.2);
+  --color-warning: oklch(59% 0.19 27.2);
+  --color-error: oklch(59% 0.19 27.2);
+}
+
+/* Custom CSS properties */
+:root {
+  --transition-speed: 0.3s;
+  --color-python: #3572A5;
+  --color-javascript: #f1e05a;
+  --color-typescript: #3178c6;
+  --color-go: #00ADD8;
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+/* Sections */
+.section {
+  min-height: 100vh;
+  position: relative;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Scroll indicator animation */
+@keyframes scrollDown {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+.scroll-line::after {
+  animation: scrollDown 1.5s ease-in-out infinite;
+}
+
+/* Blog card animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Language dot colors */
+.lang-dot-python { background-color: var(--color-python); }
+.lang-dot-javascript { background-color: var(--color-javascript); }
+.lang-dot-typescript { background-color: var(--color-typescript); }
+.lang-dot-go { background-color: var(--color-go); }
+
+/* Responsive scroll snap behavior */
+@media (max-width: 768px) {
+  html {
+    scroll-snap-type: y proximity;
+  }
+}
