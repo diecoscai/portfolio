@@ -152,6 +152,124 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// Auto-scroll to sections on wheel event
+const sectionElements = document.querySelectorAll('section[id]');
+let currentSectionIndex = 0;
+let isScrolling = false;
+let scrollCooldown = 800; // ms cooldown between scroll actions
+let touchStartY = 0;
+
+// Get the current section based on scroll position
+function getCurrentSectionIndex() {
+    const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+    for (let i = sectionElements.length - 1; i >= 0; i--) {
+        if (scrollPosition >= sectionElements[i].offsetTop) {
+            return i;
+        }
+    }
+    return 0;
+}
+
+// Scroll to a specific section
+function scrollToSection(index) {
+    if (index < 0 || index >= sectionElements.length) return;
+
+    isScrolling = true;
+    currentSectionIndex = index;
+
+    sectionElements[index].scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+
+    // Reset scrolling flag after animation completes
+    setTimeout(() => {
+        isScrolling = false;
+    }, scrollCooldown);
+}
+
+// Handle wheel events for auto-scroll
+function handleWheel(e) {
+    // Skip if already scrolling or on mobile
+    if (isScrolling || window.innerWidth <= 768) return;
+
+    e.preventDefault();
+
+    // Update current section based on actual position
+    currentSectionIndex = getCurrentSectionIndex();
+
+    // Determine scroll direction
+    if (e.deltaY > 0) {
+        // Scrolling down - go to next section
+        scrollToSection(currentSectionIndex + 1);
+    } else if (e.deltaY < 0) {
+        // Scrolling up - go to previous section
+        scrollToSection(currentSectionIndex - 1);
+    }
+}
+
+// Handle touch events for mobile swipe
+function handleTouchStart(e) {
+    touchStartY = e.touches[0].clientY;
+}
+
+function handleTouchEnd(e) {
+    if (isScrolling || window.innerWidth <= 768) return;
+
+    const touchEndY = e.changedTouches[0].clientY;
+    const deltaY = touchStartY - touchEndY;
+    const minSwipeDistance = 50; // Minimum swipe distance to trigger scroll
+
+    if (Math.abs(deltaY) < minSwipeDistance) return;
+
+    currentSectionIndex = getCurrentSectionIndex();
+
+    if (deltaY > 0) {
+        // Swiped up - go to next section
+        scrollToSection(currentSectionIndex + 1);
+    } else {
+        // Swiped down - go to previous section
+        scrollToSection(currentSectionIndex - 1);
+    }
+}
+
+// Handle keyboard navigation
+function handleKeydown(e) {
+    if (isScrolling) return;
+
+    currentSectionIndex = getCurrentSectionIndex();
+
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+        e.preventDefault();
+        scrollToSection(currentSectionIndex + 1);
+    } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+        e.preventDefault();
+        scrollToSection(currentSectionIndex - 1);
+    } else if (e.key === 'Home') {
+        e.preventDefault();
+        scrollToSection(0);
+    } else if (e.key === 'End') {
+        e.preventDefault();
+        scrollToSection(sectionElements.length - 1);
+    }
+}
+
+// Add event listeners for auto-scroll (desktop only for wheel)
+window.addEventListener('wheel', handleWheel, { passive: false });
+window.addEventListener('keydown', handleKeydown);
+
+// Touch events for potential tablet/large mobile landscape
+document.addEventListener('touchstart', handleTouchStart, { passive: true });
+document.addEventListener('touchend', handleTouchEnd, { passive: true });
+
+// Update current section index on manual scroll (for nav clicks)
+window.addEventListener('scroll', () => {
+    if (!isScrolling) {
+        currentSectionIndex = getCurrentSectionIndex();
+    }
+});
+
 // Console greeting
 console.log('%cHello! Welcome to Diego Cosca\'s portfolio.', 'color: #e74c3c; font-size: 16px; font-weight: bold;');
 console.log('%cFeel free to explore the code!', 'color: #666; font-size: 12px;');
