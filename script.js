@@ -1,26 +1,11 @@
 // Theme Toggle
 const themeToggle = document.getElementById('themeToggle');
-const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-
-// Check for saved theme preference or default to light
-function getThemePreference() {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        return savedTheme;
-    }
-    // Default to light theme as requested
-    return 'light';
-}
 
 function setTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
 }
 
-// Initialize theme
-setTheme(getThemePreference());
-
-// Toggle theme on button click
 themeToggle.addEventListener('click', () => {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -35,7 +20,6 @@ const bottomIndicator = document.getElementById('bottomIndicator');
 const nextSectionName = document.getElementById('nextSectionName');
 const scrollIndicator = document.getElementById('scrollIndicator');
 
-// Section names mapping (current section -> next section name to display)
 const sectionNames = {
     'profile': 'BLOG',
     'blog': 'PROJECTS',
@@ -44,7 +28,7 @@ const sectionNames = {
 };
 
 function updateActiveNav() {
-    const scrollPosition = window.scrollY + window.innerHeight / 3;
+    const scrollPosition = window.scrollY + window.innerHeight / 2;
 
     sections.forEach((section, index) => {
         const sectionTop = section.offsetTop;
@@ -52,15 +36,15 @@ function updateActiveNav() {
         const sectionId = section.getAttribute('id');
 
         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            // Update nav links
             navLinks.forEach(link => {
                 link.classList.remove('active');
+                link.removeAttribute('aria-current');
                 if (link.getAttribute('href') === `#${sectionId}`) {
                     link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
                 }
             });
 
-            // Update indicator lines
             indicatorLines.forEach((line, i) => {
                 line.classList.remove('active');
                 if (i === index) {
@@ -68,7 +52,6 @@ function updateActiveNav() {
                 }
             });
 
-            // Update bottom section indicator
             const nextName = sectionNames[sectionId];
             if (nextName) {
                 nextSectionName.textContent = nextName;
@@ -99,40 +82,27 @@ navLinks.forEach(link => {
     });
 });
 
-// Intersection Observer for animations
-const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-};
-
-const animateOnScroll = new IntersectionObserver((entries) => {
+// Intersection Observer for scroll animations
+const animateOnScroll = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
+            entry.target.style.transitionDelay = '';
+            observer.unobserve(entry.target);
         }
     });
-}, observerOptions);
+}, { threshold: 0.1 });
 
-// Add animation to elements
-document.querySelectorAll('.blog-card, .project-card').forEach(el => {
+document.querySelectorAll('.blog-card, .project-card').forEach((el, index) => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    el.style.transitionDelay = `${index * 0.1}s`;
     animateOnScroll.observe(el);
 });
 
-// Add staggered animation delay to cards
-document.querySelectorAll('.blog-card').forEach((card, index) => {
-    card.style.transitionDelay = `${index * 0.15}s`;
-});
-
-document.querySelectorAll('.project-card').forEach((card, index) => {
-    card.style.transitionDelay = `${index * 0.1}s`;
-});
-
-// Navbar background on scroll
+// Navbar shadow on scroll
 const navbar = document.querySelector('.navbar');
 
 window.addEventListener('scroll', () => {
@@ -143,7 +113,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Hide scroll indicator after scrolling (slides down and fades)
+// Hide scroll indicator after scrolling
 window.addEventListener('scroll', () => {
     if (window.scrollY > 100) {
         scrollIndicator.classList.add('hidden');
@@ -151,7 +121,3 @@ window.addEventListener('scroll', () => {
         scrollIndicator.classList.remove('hidden');
     }
 });
-
-// Console greeting
-console.log('%cHello! Welcome to Diego Cosca\'s portfolio.', 'color: #e74c3c; font-size: 16px; font-weight: bold;');
-console.log('%cFeel free to explore the code!', 'color: #666; font-size: 12px;');

@@ -4,21 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diego Cosca - Full Stack Developer</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Diego Cosca is a Full Stack Developer specializing in AI integration, web development, and building innovative business solutions.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://diegocosca.dev/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Diego Cosca - Full Stack Developer">
+    <meta property="og:description" content="Full Stack Developer specializing in AI integration, web development, and building innovative business solutions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://diegocosca.dev/">
+    <meta property="og:site_name" content="Diego Cosca">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Diego Cosca - Full Stack Developer">
+    <meta name="twitter:description" content="Full Stack Developer specializing in AI integration, web development, and building innovative business solutions.">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Diego Cosca",
+        "url": "https://diegocosca.dev",
+        "jobTitle": "Full Stack Developer",
+        "email": "hello@diegocosca.dev",
+        "sameAs": [
+            "https://github.com/diecoscai"
+        ],
+        "knowsAbout": ["React", "Node.js", "TypeScript", "Python", "AI Integration", "Machine Learning", "Web Development"]
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <!-- Prevent dark mode flash -->
+    <script>
+        (function() {
+            var theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Main navigation">
         <a href="#profile" class="logo">Diego<br>Cosca.</a>
         <div class="nav-links">
-            <a href="#profile" class="nav-link active">Profile</a>
+            <a href="#profile" class="nav-link active" aria-current="page">Profile</a>
             <a href="#blog" class="nav-link">Blog</a>
             <a href="#projects" class="nav-link">Projects</a>
             <a href="#contact" class="nav-link">Contact</a>
-            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
                 <span class="toggle-track">
                     <span class="toggle-thumb"></span>
                 </span>
@@ -27,26 +71,12 @@
     </nav>
 
     <!-- Social Links Sidebar -->
-    <aside class="social-sidebar">
+    <div class="social-sidebar">
         <div class="social-line"></div>
         <a href="https://github.com/diecoscai" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
                 <path d="M9 18c-4.51 2-5-2-7-2"/>
-            </svg>
-            <span class="icon-fill"></span>
-        </a>
-        <a href="https://linkedin.com/in/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                <rect width="4" height="12" x="2" y="9"/>
-                <circle cx="4" cy="4" r="2"/>
-            </svg>
-            <span class="icon-fill"></span>
-        </a>
-        <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Twitter">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
             </svg>
             <span class="icon-fill"></span>
         </a>
@@ -58,232 +88,159 @@
             <span class="icon-fill"></span>
         </a>
         <div class="social-line"></div>
-    </aside>
+    </div>
 
     <!-- Section Indicator -->
-    <aside class="section-indicator">
+    <div class="section-indicator" aria-hidden="true">
         <span class="indicator-line active"></span>
         <span class="indicator-line"></span>
         <span class="indicator-line"></span>
         <span class="indicator-line"></span>
-    </aside>
+    </div>
 
     <!-- Fixed Bottom Section Indicator -->
-    <div class="bottom-section-indicator" id="bottomIndicator">
+    <div class="bottom-section-indicator" id="bottomIndicator" aria-hidden="true">
         <span id="nextSectionName">BLOG</span>
         <div class="indicator-line-bottom"></div>
     </div>
 
-    <!-- Profile Section -->
-    <section id="profile" class="section profile-section">
-        <div class="scroll-indicator" id="scrollIndicator">
-            <span>SCROLL DOWN</span>
-            <div class="scroll-line"></div>
-        </div>
-
-        <div class="profile-content">
-            <div class="profile-text">
-                <h1>Hello,<br><span class="name-highlight">My name is Diego</span></h1>
-                <p class="subtitle">I'm currently a Full Stack Developer passionate about building innovative solutions.</p>
-                <p class="description">My areas of interest include AI development and integration into business solutions, web development, machine learning, and mobile development.</p>
-                <p class="description">With a detail-oriented focus, I enjoy creating simple but effective solutions to improve application performance, ease of maintenance, and user experience.</p>
-                <a href="#" class="resume-link">Get My Resume</a>
+    <!-- Main Content -->
+    <main>
+        <!-- Profile Section -->
+        <section id="profile" class="section profile-section">
+            <div class="scroll-indicator" id="scrollIndicator" aria-hidden="true">
+                <span>SCROLL DOWN</span>
+                <div class="scroll-line"></div>
             </div>
-            <div class="profile-image">
-                <div class="image-wrapper">
-                    <div class="image-container">
-                        <div class="placeholder-avatar">
-                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="50" cy="35" r="20" fill="currentColor" opacity="0.3"/>
-                                <ellipse cx="50" cy="85" rx="35" ry="25" fill="currentColor" opacity="0.3"/>
-                            </svg>
+
+            <div class="profile-content">
+                <div class="profile-text">
+                    <h1>Hello,<br><span class="name-highlight">My name is Diego</span></h1>
+                    <p class="subtitle">I'm currently a Full Stack Developer passionate about building innovative solutions.</p>
+                    <p class="description">My areas of interest include AI development and integration into business solutions, web development, machine learning, and mobile development.</p>
+                    <p class="description">With a detail-oriented focus, I enjoy creating simple but effective solutions to improve application performance, ease of maintenance, and user experience.</p>
+                </div>
+                <div class="profile-image">
+                    <div class="image-wrapper">
+                        <div class="image-container">
+                            <div class="placeholder-avatar" role="img" aria-label="Diego Cosca profile photo">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="50" cy="35" r="20" fill="currentColor" opacity="0.3"/>
+                                    <ellipse cx="50" cy="85" rx="35" ry="25" fill="currentColor" opacity="0.3"/>
+                                </svg>
+                            </div>
                         </div>
+                        <div class="decoration-block decoration-right"></div>
+                        <div class="decoration-block decoration-bottom"></div>
                     </div>
-                    <div class="decoration-block decoration-right"></div>
-                    <div class="decoration-block decoration-bottom"></div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Blog Section -->
-    <section id="blog" class="section blog-section">
-        <div class="blog-container">
-            <a href="#" class="blog-card life-blog">
-                <div class="blog-card-bg"></div>
-                <div class="blog-card-content">
-                    <h2>Life Blog</h2>
-                    <p>My journey through AI development, personal projects, hobbies, and the experiences that shape my path as a developer.</p>
-                    <span class="blog-card-arrow">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
+        <!-- Blog Section -->
+        <section id="blog" class="section blog-section">
+            <div class="blog-container">
+                <a href="#" class="blog-card life-blog">
+                    <div class="blog-card-bg"></div>
+                    <div class="blog-card-content">
+                        <h2>Life Blog</h2>
+                        <p>My journey through AI development, personal projects, hobbies, and the experiences that shape my path as a developer.</p>
+                        <span class="blog-card-arrow" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="blog-card-overlay"></div>
+                </a>
+                <a href="#" class="blog-card tech-blog">
+                    <div class="blog-card-bg"></div>
+                    <div class="blog-card-content">
+                        <h2>Tech Blog</h2>
+                        <p>Technical tutorials, Claude configurations, AI agents guides, and informative posts about the tools and technologies I use.</p>
+                        <span class="blog-card-arrow" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="blog-card-overlay"></div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section projects-section">
+            <div class="projects-header">
+                <div class="projects-intro">
+                    <h2>Projects.</h2>
+                    <p>These are some of my open source projects on Github.<br>If you're a developer, feel free to make a pull request!</p>
+                </div>
+                <a href="https://github.com/diecoscai" target="_blank" rel="noopener noreferrer" class="github-profile">
+                    <div class="github-avatar" role="img" aria-label="GitHub avatar">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="35" r="20" fill="currentColor" opacity="0.5"/>
+                            <ellipse cx="50" cy="85" rx="35" ry="25" fill="currentColor" opacity="0.5"/>
                         </svg>
-                    </span>
-                </div>
-                <div class="blog-card-overlay"></div>
-            </a>
-            <a href="#" class="blog-card tech-blog">
-                <div class="blog-card-bg"></div>
-                <div class="blog-card-content">
-                    <h2>Tech Blog</h2>
-                    <p>Technical tutorials, Claude configurations, AI agents guides, and informative posts about the tools and technologies I use.</p>
-                    <span class="blog-card-arrow">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
+                    </div>
+                    <div class="github-info">
+                        <h4>Diego Cosca</h4>
+                        <span>@diecoscai</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="projects-grid" id="projectsGrid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <svg class="repo-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                            <path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"/>
                         </svg>
-                    </span>
+                        <a href="https://github.com/diecoscai" class="project-name">portfolio</a>
+                    </div>
+                    <p class="project-description">My personal portfolio website built with vanilla HTML, CSS, and JavaScript. Features dark mode, scroll animations, and responsive design.</p>
+                    <div class="project-meta">
+                        <span class="language"><span class="lang-dot javascript"></span>JavaScript</span>
+                    </div>
                 </div>
-                <div class="blog-card-overlay"></div>
-            </a>
-        </div>
-    </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section projects-section">
-        <div class="projects-header">
-            <div class="projects-intro">
-                <h2>Projects.</h2>
-                <p>These are my open source projects which are fetched directly from Github.<br>If you're a developer, feel free to make a pull request!</p>
-            </div>
-            <div class="github-profile">
-                <div class="github-avatar">
-                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="35" r="20" fill="currentColor" opacity="0.5"/>
-                        <ellipse cx="50" cy="85" rx="35" ry="25" fill="currentColor" opacity="0.5"/>
-                    </svg>
-                </div>
-                <div class="github-info">
-                    <h4>Diego Cosca</h4>
-                    <span>@diecoscai</span>
+                <div class="project-card">
+                    <div class="project-header">
+                        <svg class="repo-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                            <path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"/>
+                        </svg>
+                        <span class="project-name placeholder-project">More projects coming soon</span>
+                    </div>
+                    <p class="project-description">Stay tuned for upcoming open source projects in AI integration, web development, and more.</p>
+                    <div class="project-meta">
+                        <span class="language"><span class="lang-dot typescript"></span>TypeScript</span>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="projects-grid" id="projectsGrid">
-            <div class="project-card">
-                <div class="project-header">
-                    <svg class="repo-icon" viewBox="0 0 16 16" fill="currentColor">
-                        <path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"/>
-                    </svg>
-                    <a href="#" class="project-name">AI-Integration-Framework</a>
-                </div>
-                <p class="project-description">A framework for integrating AI/ML models into business applications with REST APIs and real-time processing.</p>
-                <div class="project-meta">
-                    <span class="language"><span class="lang-dot python"></span>Python</span>
-                    <span class="stars">42</span>
-                    <span class="forks">8</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <svg class="repo-icon" viewBox="0 0 16 16" fill="currentColor">
-                        <path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"/>
-                    </svg>
-                    <a href="#" class="project-name">FullStack-Dashboard</a>
-                </div>
-                <p class="project-description">Modern admin dashboard built with React, Node.js, and PostgreSQL. Features real-time analytics and user management.</p>
-                <div class="project-meta">
-                    <span class="language"><span class="lang-dot typescript"></span>TypeScript</span>
-                    <span class="stars">67</span>
-                    <span class="forks">15</span>
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section">
+            <div class="contact-content">
+                <h2>Contact!</h2>
+                <p>Feel free to reach out if you want to build something together, have a question, or just want to connect.</p>
+                <a href="mailto:hello@diegocosca.dev" class="email-link">hello@diegocosca.dev</a>
+                <div class="social-links">
+                    <a href="https://github.com/diecoscai" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <svg class="repo-icon" viewBox="0 0 16 16" fill="currentColor">
-                        <path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"/>
-                    </svg>
-                    <a href="#" class="project-name">ML-Pipeline-Toolkit</a>
-                </div>
-                <p class="project-description">End-to-end machine learning pipeline with automated feature engineering, model training, and deployment.</p>
-                <div class="project-meta">
-                    <span class="language"><span class="lang-dot python"></span>Python</span>
-                    <span class="stars">89</span>
-                    <span class="forks">23</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <svg class="repo-icon" viewBox="0 0 16 16" fill="currentColor">
-                        <path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"/>
-                    </svg>
-                    <a href="#" class="project-name">React-Native-Starter</a>
-                </div>
-                <p class="project-description">Production-ready React Native boilerplate with authentication, navigation, and state management configured.</p>
-                <div class="project-meta">
-                    <span class="language"><span class="lang-dot javascript"></span>JavaScript</span>
-                    <span class="stars">34</span>
-                    <span class="forks">12</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <svg class="repo-icon" viewBox="0 0 16 16" fill="currentColor">
-                        <path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"/>
-                    </svg>
-                    <a href="#" class="project-name">API-Gateway-Service</a>
-                </div>
-                <p class="project-description">Microservices API gateway with rate limiting, authentication, and request routing capabilities.</p>
-                <div class="project-meta">
-                    <span class="language"><span class="lang-dot go"></span>Go</span>
-                    <span class="stars">56</span>
-                    <span class="forks">9</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <svg class="repo-icon" viewBox="0 0 16 16" fill="currentColor">
-                        <path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"/>
-                    </svg>
-                    <a href="#" class="project-name">ChatBot-NLP-Engine</a>
-                </div>
-                <p class="project-description">Natural language processing engine for building intelligent chatbots with intent recognition and entity extraction.</p>
-                <div class="project-meta">
-                    <span class="language"><span class="lang-dot python"></span>Python</span>
-                    <span class="stars">78</span>
-                    <span class="forks">19</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section contact-section">
-        <div class="contact-content">
-            <h2>Contact!</h2>
-            <p>Feel free to reach out if you want to build something together, have a question, or just want to connect.</p>
-            <a href="mailto:hello@diegocosca.dev" class="email-link">hello@diegocosca.dev</a>
-            <div class="social-links">
-                <a href="https://github.com/diecoscai" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                </a>
-                <a href="https://linkedin.com/in/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                    </svg>
-                </a>
-                <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>Handcrafted by me &copy; 2025.</p>
-        <p>Design inspired by modern portfolio trends.</p>
+        <p>Handcrafted by me &copy; <script>document.write(new Date().getFullYear())</script>.</p>
     </footer>
 
     <script src="script.js"></script>
