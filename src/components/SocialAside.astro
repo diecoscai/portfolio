@@ -1,0 +1,22 @@
+---
+import Icon from './Icon.astro';
+import { profile } from '../data/profile';
+---
+
+<aside class="fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-center gap-1 lg:flex">
+  <span class="mb-2 h-10 w-px bg-hairline-strong"></span>
+  {
+    profile.socials.map((s) => (
+      <a
+        href={s.href}
+        target={s.icon === 'mail' ? undefined : '_blank'}
+        rel={s.icon === 'mail' ? undefined : 'noopener noreferrer'}
+        aria-label={s.label}
+        class="grid h-10 w-10 place-items-center rounded-md text-ink-subtle transition-colors hover:bg-surface-1 hover:text-ink"
+      >
+        <Icon name={s.icon as any} size={18} />
+      </a>
+    ))
+  }
+  <span class="mt-2 h-10 w-px bg-hairline-strong"></span>
+</aside>

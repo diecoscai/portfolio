@@ -1,0 +1,10 @@
+---
+import { profile } from '../data/profile';
+const year = new Date().getFullYear();
+---
+<footer class="border-t border-hairline">
+  <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-8 text-sm text-ink-subtle sm:flex-row lg:px-8">
+    <span>© {year} {profile.name}</span>
+    <span class="font-mono text-xs">Built with Astro · Tailwind</span>
+  </div>
+</footer>

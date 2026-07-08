@@ -1,0 +1,73 @@
+---
+import { profile } from '../data/profile';
+import Icon from './Icon.astro';
+
+const mailto = `mailto:${profile.email}`;
+---
+
+<section id="contact" class="mx-auto max-w-6xl px-6 py-24 lg:px-8 lg:py-28">
+  <div class="reveal panel-hairline mx-auto flex flex-col items-center rounded-2xl bg-surface-1 p-10 text-center lg:p-16">
+    <p class="font-mono text-xs uppercase tracking-[0.2em] text-ink-subtle">Contact</p>
+
+    <h2 class="mt-5 max-w-2xl text-3xl font-semibold tracking-display-md text-ink sm:text-4xl lg:text-5xl">
+      Let&rsquo;s build something.
+    </h2>
+
+    <p class="mt-4 max-w-md text-base text-ink-muted">
+      Have a project, a role, or an idea worth shipping? I&rsquo;m one message away.
+    </p>
+
+    <a
+      href={mailto}
+      class="group mt-8 inline-flex items-center gap-2.5 text-xl text-ink transition-colors hover:text-primary lg:text-2xl"
+    >
+      <Icon name="mail" size={22} class="text-ink-subtle transition-colors group-hover:text-primary" />
+      {profile.email}
+    </a>
+
+    <div class="mt-8">
+      <a
+        href={mailto}
+        class="inline-flex min-h-[44px] items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-medium text-on-primary transition-colors hover:bg-primary-hover"
+      >
+        Email me
+        <Icon name="arrow-up-right" size={16} />
+      </a>
+    </div>
+
+    <ul class="mt-10 flex items-center justify-center gap-2">
+      {
+        profile.socials.map((s) => {
+          const external = s.icon === 'github' || s.icon === 'linkedin';
+          return (
+            <li>
+              <a
+                href={s.href}
+                aria-label={s.label}
+                {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                class="flex h-11 w-11 items-center justify-center rounded-md border border-hairline text-ink-subtle transition-colors hover:bg-surface-2 hover:text-ink"
+              >
+                <Icon name={s.icon} size={18} />
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+
+    <p class="mt-10 flex items-center justify-center gap-2 font-mono text-xs text-ink-subtle">
+      <span>{profile.location}</span>
+      {
+        profile.available && (
+          <>
+            <span class="text-ink-tertiary">&middot;</span>
+            <span class="inline-flex items-center gap-1.5">
+              <span class="h-2 w-2 rounded-full bg-success" aria-hidden="true" />
+              Available for work
+            </span>
+          </>
+        )
+      }
+    </p>
+  </div>
+</section>

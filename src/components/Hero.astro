@@ -1,0 +1,66 @@
+---
+import { profile } from '../data/profile';
+import Icon from './Icon.astro';
+---
+
+<section id="top" class="relative flex min-h-[92vh] items-center">
+  <div class="mx-auto w-full max-w-6xl px-6 py-24 lg:px-8 lg:py-28">
+    {
+      profile.available && (
+        <div class="reveal">
+          <span class="inline-flex items-center gap-2 rounded-full border border-hairline bg-surface-1 px-3 py-1 font-mono text-xs uppercase tracking-wider text-ink-subtle">
+            <span class="relative flex h-2 w-2">
+              <span class="absolute inline-flex h-full w-full rounded-full bg-success opacity-75 motion-safe:animate-ping" />
+              <span class="relative inline-flex h-2 w-2 rounded-full bg-success" />
+            </span>
+            Available for work
+          </span>
+        </div>
+      )
+    }
+
+    <h1
+      class="reveal mt-8 max-w-4xl text-4xl font-semibold tracking-display-lg text-ink sm:text-6xl lg:text-7xl"
+    >
+      {profile.name}
+      <span class="mt-2 block text-ink-muted">
+        building LLM agent systems &amp; full-stack products.
+      </span>
+    </h1>
+
+    <p class="reveal mt-6 max-w-2xl text-lg text-ink-muted lg:text-xl">
+      {profile.tagline}
+    </p>
+
+    <div class="reveal mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+      <a
+        href="#work"
+        class="inline-flex min-h-[44px] items-center justify-center rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-on-primary transition-colors hover:bg-primary-hover"
+      >
+        View work
+      </a>
+      <a
+        href="#contact"
+        class="inline-flex min-h-[44px] items-center justify-center rounded-md border border-hairline bg-surface-1 px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-surface-2"
+      >
+        Get in touch
+      </a>
+    </div>
+
+    <div
+      class="reveal mt-10 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-ink-subtle"
+    >
+      <span>{profile.location}</span>
+      <span aria-hidden="true" class="text-ink-tertiary">/</span>
+      <span>{profile.timezone}</span>
+    </div>
+  </div>
+
+  <a
+    href="#work"
+    aria-label="Scroll to work"
+    class="absolute inset-x-0 bottom-8 mx-auto hidden w-fit text-ink-tertiary transition-colors hover:text-ink-muted sm:flex"
+  >
+    <Icon name="arrow-down" size={20} class="motion-safe:animate-bounce" />
+  </a>
+</section>
