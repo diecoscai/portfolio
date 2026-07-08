@@ -1,0 +1,97 @@
+---
+import '../styles/global.css';
+import { profile } from '../data/profile';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = `${profile.name} — ${profile.role}`,
+  description = profile.tagline,
+} = Astro.props;
+
+const siteBase = Astro.site ?? 'https://diegocosta.dev';
+const canonical = new URL(Astro.url.pathname, siteBase).href;
+const ogImage = new URL('/og.png', siteBase).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="author" content={profile.name} />
+    <meta name="theme-color" content="#010102" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content={profile.name} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: profile.name,
+        jobTitle: profile.role,
+        email: profile.email,
+        address: { '@type': 'PostalAddress', addressLocality: profile.location },
+        url: 'https://diegocosta.dev',
+        sameAs: profile.socials.filter((s) => s.icon !== 'mail').map((s) => s.href),
+      })}
+    />
+  </head>
+  <body>
+    <slot />
+    <script>
+      // Scroll-reveal via IntersectionObserver
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              e.target.classList.add('in-view');
+              io.unobserve(e.target);
+            }
+          }
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+      );
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+      // Active-section tracking for nav
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('[data-nav-link]');
+      const spy = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              const id = e.target.getAttribute('id');
+              navLinks.forEach((l) =>
+                l.toggleAttribute('data-active', l.getAttribute('data-nav-link') === id)
+              );
+            }
+          }
+        },
+        { threshold: 0.5 }
+      );
+      sections.forEach((s) => spy.observe(s));
+    </script>
+  </body>
+</html>

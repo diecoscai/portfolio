@@ -1,0 +1,124 @@
+---
+import Icon from './Icon.astro';
+import { projects } from '../data/projects';
+
+const featured = projects.find((p) => p.featured);
+const rest = projects.filter((p) => !p.featured);
+
+const iconForKind = (kind: string) => {
+  if (kind === 'github') return 'github';
+  if (kind === 'npm') return 'npm';
+  return 'external';
+};
+---
+
+<section id="work" class="py-24 lg:py-28">
+  <div class="mx-auto max-w-6xl px-6 lg:px-8">
+    <div class="reveal max-w-2xl">
+      <p class="font-mono text-xs uppercase tracking-[0.2em] text-ink-subtle">Work</p>
+      <h2 class="mt-3 text-4xl font-semibold tracking-display-md text-ink sm:text-5xl">
+        Selected work
+      </h2>
+      <p class="mt-4 text-ink-muted">
+        A few things I&rsquo;ve designed, shipped and maintained &mdash; from published tooling to
+        product explorations.
+      </p>
+    </div>
+
+    {
+      featured && (
+        <article class="reveal panel-hairline mt-12 rounded-xl bg-surface-1 p-6 lg:p-8">
+          <div class="flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <h3 class="text-2xl font-semibold tracking-tight text-ink">{featured.name}</h3>
+              <p class="mt-1 font-mono text-sm text-ink-subtle">{featured.tagline}</p>
+            </div>
+            {featured.links.length > 0 && (
+              <div class="flex flex-wrap items-center gap-2">
+                {featured.links.map((link) => (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${featured.name} — ${link.label}`}
+                    class="inline-flex min-h-10 items-center gap-2 rounded-md border border-hairline bg-surface-2 px-3 py-2 font-mono text-xs text-ink-muted transition-colors hover:bg-surface-3 hover:text-ink"
+                  >
+                    <Icon name={iconForKind(link.kind)} size={16} />
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <p class="mt-5 max-w-3xl text-ink-muted">{featured.description}</p>
+
+          {featured.highlights && featured.highlights.length > 0 && (
+            <ul class="mt-6 flex flex-wrap gap-2">
+              {featured.highlights.map((h) => (
+                <li class="rounded-full border border-hairline-strong bg-surface-2 px-3 py-1 font-mono text-xs text-ink">
+                  {h}
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <ul class="mt-4 flex flex-wrap gap-2">
+            {featured.stack.map((tech) => (
+              <li class="rounded-md border border-hairline px-2.5 py-1 font-mono text-xs text-ink-subtle">
+                {tech}
+              </li>
+            ))}
+          </ul>
+        </article>
+      )
+    }
+
+    <div class="reveal mt-5 grid gap-5 sm:grid-cols-2">
+      {
+        rest.map((project) => (
+          <article class="group rounded-lg border border-hairline bg-surface-1 p-6 transition-colors hover:bg-surface-2">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="text-lg font-semibold tracking-tight text-ink">{project.name}</h3>
+                <p class="mt-1 font-mono text-sm text-ink-subtle">{project.tagline}</p>
+              </div>
+              <Icon
+                name="arrow-up-right"
+                size={18}
+                class="mt-1 shrink-0 text-ink-tertiary opacity-0 transition-opacity group-hover:opacity-100"
+              />
+            </div>
+
+            <p class="mt-4 text-sm text-ink-muted">{project.description}</p>
+
+            <ul class="mt-5 flex flex-wrap gap-2">
+              {project.stack.map((tech) => (
+                <li class="rounded-md border border-hairline px-2.5 py-1 font-mono text-xs text-ink-subtle">
+                  {tech}
+                </li>
+              ))}
+            </ul>
+
+            {project.links.length > 0 && (
+              <div class="mt-5 flex flex-wrap items-center gap-2 border-t border-hairline pt-4">
+                {project.links.map((link) => (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${project.name} — ${link.label}`}
+                    class="inline-flex min-h-10 items-center gap-2 rounded-md px-2 py-2 font-mono text-xs text-ink-muted transition-colors hover:text-primary"
+                  >
+                    <Icon name={iconForKind(link.kind)} size={16} />
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            )}
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
