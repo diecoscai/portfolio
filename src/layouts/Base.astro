@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { profile } from '../data/profile';
+import { getLocale } from '../i18n';
 
 interface Props {
   title?: string;
@@ -15,10 +16,12 @@ const {
 const siteBase = Astro.site ?? 'https://diegocosta.dev';
 const canonical = new URL(Astro.url.pathname, siteBase).href;
 const ogImage = new URL('/og.png', siteBase).href;
+
+const locale = getLocale(Astro.currentLocale);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,6 +30,9 @@ const ogImage = new URL('/og.png', siteBase).href;
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={new URL('/', siteBase).href} />
+    <link rel="alternate" hreflang="es" href={new URL('/es/', siteBase).href} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/', siteBase).href} />
     <meta name="author" content={profile.name} />
     <meta name="theme-color" content="#010102" />
 
