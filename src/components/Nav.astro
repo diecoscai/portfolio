@@ -10,25 +10,30 @@ const links = [
 ];
 ---
 
-<header
-  class="fixed inset-x-0 top-0 z-50 border-b border-hairline/60 bg-canvas/70 backdrop-blur-md"
->
-  <nav class="mx-auto flex h-14 max-w-6xl items-center justify-between px-6 lg:px-8">
-    <a href="#top" class="group flex items-center gap-2" aria-label="Diego Costa — home">
-      <span class="grid h-6 w-6 place-items-center rounded-md bg-primary text-[13px] font-semibold text-on-primary">
+<header class="fixed inset-x-0 top-4 z-50 flex justify-center px-4">
+  <nav
+    class="relative flex h-12 items-center gap-1 rounded-full border border-hairline bg-canvas/70 px-1.5 shadow-lg shadow-black/10 backdrop-blur-md"
+    aria-label="Main"
+  >
+    <a href="#top" class="flex items-center pl-1 pr-2" aria-label="Diego Costa — home">
+      <span class="grid h-7 w-7 place-items-center rounded-full bg-primary text-[13px] font-semibold text-on-primary">
         D
       </span>
-      <span class="text-sm font-semibold tracking-tight text-ink">Diego Costa</span>
     </a>
 
-    <ul class="hidden items-center gap-1 md:flex">
+    <ul id="nav-links" class="relative hidden items-center md:flex">
+      <span
+        id="nav-pill"
+        aria-hidden="true"
+        class="absolute left-0 top-1/2 -z-10 h-8 w-0 -translate-y-1/2 rounded-full bg-surface-2 opacity-0"
+      ></span>
       {
         links.map((l) => (
           <li>
             <a
               href={`#${l.id}`}
               data-nav-link={l.id}
-              class="nav-link rounded-md px-3 py-1.5 text-sm text-ink-subtle transition-colors hover:text-ink"
+              class="nav-link block rounded-full px-3 py-1.5 text-sm text-ink-subtle transition-colors hover:text-ink"
             >
               {l.label}
             </a>
@@ -37,45 +42,45 @@ const links = [
       }
     </ul>
 
-    <div class="flex items-center gap-2">
-      <ThemeToggle />
-      <a
-        href="#contact"
-        class="rounded-md bg-primary px-3.5 py-2 text-sm font-medium text-on-primary transition-colors hover:bg-primary-hover"
-      >
-        Get in touch
-      </a>
+    <span class="mx-1 hidden h-5 w-px bg-hairline md:block" aria-hidden="true"></span>
 
-      <button
-        id="menu-toggle"
-        type="button"
-        class="grid h-10 w-10 place-items-center rounded-md border border-hairline text-ink-subtle transition-colors hover:text-ink md:hidden"
-        aria-label="Open menu"
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-      </button>
-    </div>
+    <ThemeToggle />
+
+    <a
+      href="#contact"
+      class="hidden rounded-full bg-primary px-3.5 py-1.5 text-sm font-medium text-on-primary transition-colors hover:bg-primary-hover sm:block"
+    >
+      Get in touch
+    </a>
+
+    <button
+      id="menu-toggle"
+      type="button"
+      class="grid h-9 w-9 place-items-center rounded-full text-ink-subtle transition-colors hover:text-ink md:hidden"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
   </nav>
 
-  <!-- Mobile dropdown menu -->
   <div
     id="mobile-menu"
-    class="hidden border-t border-hairline bg-canvas/95 backdrop-blur-md md:hidden"
+    class="absolute left-1/2 top-[calc(100%+8px)] hidden w-[min(92vw,360px)] -translate-x-1/2 rounded-2xl border border-hairline bg-canvas/95 p-2 shadow-xl shadow-black/20 backdrop-blur-md md:hidden"
   >
-    <ul class="mx-auto flex max-w-6xl flex-col px-6 py-2">
+    <ul class="flex flex-col">
       {
         links.map((l) => (
           <li>
             <a
               href={`#${l.id}`}
               data-menu-link
-              class="block border-b border-hairline/60 py-3 text-sm text-ink-subtle transition-colors hover:text-ink"
+              class="block rounded-lg px-3 py-3 text-sm text-ink-subtle transition-colors hover:bg-surface-1 hover:text-ink"
             >
               {l.label}
             </a>
@@ -90,13 +95,16 @@ const links = [
   .nav-link[data-active] {
     color: var(--color-ink);
   }
-  .nav-link[data-active]::after {
-    content: '';
-    display: block;
-    height: 1.5px;
-    margin-top: 3px;
-    border-radius: 9999px;
-    background: var(--color-primary);
+  #nav-pill {
+    transition:
+      transform 0.2s var(--ease-out-linear),
+      width 0.2s var(--ease-out-linear),
+      opacity 0.2s ease;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #nav-pill {
+      transition: none;
+    }
   }
 </style>
 
@@ -116,4 +124,28 @@ const links = [
     });
     menu.querySelectorAll('[data-menu-link]').forEach((a) => a.addEventListener('click', close));
   }
+
+  const pill = document.getElementById('nav-pill');
+  const linksWrap = document.getElementById('nav-links');
+  let currentId: string | null = null;
+
+  const position = () => {
+    if (!pill || !linksWrap) return;
+    const link = currentId
+      ? linksWrap.querySelector<HTMLElement>(`[data-nav-link="${currentId}"]`)
+      : null;
+    if (!link) {
+      pill.style.opacity = '0';
+      return;
+    }
+    pill.style.opacity = '1';
+    pill.style.width = `${link.offsetWidth}px`;
+    pill.style.transform = `translateX(${link.offsetLeft}px) translateY(-50%)`;
+  };
+
+  document.addEventListener('nav:active', (e) => {
+    currentId = (e as CustomEvent<{ id: string | null }>).detail.id;
+    position();
+  });
+  window.addEventListener('resize', position);
 </script>
