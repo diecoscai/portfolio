@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import 'tailwindcss' source('../');
 
 /* Fonts — Inter (Linear Display/Text substitute) + JetBrains Mono (Linear Mono substitute) */
 @import '@fontsource-variable/inter';
@@ -11,9 +11,10 @@
 @theme {
   /* Brand & accent */
   --color-primary: #5e6ad2;
-  --color-primary-hover: #828fff;
+  --color-primary-hover: #4f5ac4;
   --color-primary-focus: #5e69d1;
   --color-on-primary: #ffffff;
+  --color-accent: #96a0ff;
   --color-brand-secure: #7a7fad;
 
   /* Surface ladder */
@@ -57,6 +58,54 @@
   --ease-out-linear: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/*
+  Theme mechanism: data-theme on <html> overrides the @theme variables at
+  runtime. These rules live outside every @layer so they beat Tailwind
+  utilities in the cascade.
+*/
+:root {
+  --panel-highlight: rgb(255 255 255 / 0.03);
+}
+
+:root[data-theme='light'] {
+  --color-canvas: #f7f8fa;
+  --color-surface-1: #ffffff;
+  --color-surface-2: #f0f1f4;
+  --color-surface-3: #e8e9ee;
+  --color-surface-4: #eaebf0;
+  --color-hairline: #e4e5ea;
+  --color-hairline-strong: #d0d2d9;
+  --color-hairline-tertiary: #b9bcc4;
+  --color-brand-secure: #63678c;
+  --color-ink: #08090a;
+  --color-ink-muted: #3c4149;
+  --color-ink-subtle: #64696f;
+  --color-ink-tertiary: #7c8189;
+  --color-primary: #4f5ac4;
+  --color-primary-hover: #414bab;
+  --color-accent: #4f5ac4;
+  --color-success: #1f8f3a;
+  --panel-highlight: rgb(0 0 0 / 0.04);
+}
+
+/* Theme swap uses a clip-path reveal; kill the default cross-fade. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Sun shows in dark, moon in light — CSS-only so first paint needs no JS. */
+#theme-toggle .icon-moon {
+  display: none;
+}
+:root[data-theme='light'] #theme-toggle .icon-sun {
+  display: none;
+}
+:root[data-theme='light'] #theme-toggle .icon-moon {
+  display: block;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -80,10 +129,11 @@
     color: var(--color-ink);
   }
 
-  /* Focus ring — Linear: 2px primary-focus at 50% */
+  /* Focus ring — solid double ring; offset and shadow spread must match */
   :focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--color-primary-focus) 60%, transparent);
+    outline: 2px solid var(--color-primary-focus);
     outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--color-canvas);
     border-radius: 4px;
   }
 
@@ -103,7 +153,7 @@
   /* Faint top edge highlight on lifted panels (Linear "pixel-rendered" feel) */
   .panel-hairline {
     border: 1px solid var(--color-hairline);
-    box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.03);
+    box-shadow: inset 0 1px 0 0 var(--panel-highlight);
   }
 
   .writing-vertical {

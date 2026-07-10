@@ -30,6 +30,19 @@ const ogImage = new URL('/og.png', siteBase).href;
     <meta name="author" content={profile.name} />
     <meta name="theme-color" content="#010102" />
 
+    <script is:inline>
+      // Runs before first paint: is:inline keeps Astro from deferring it.
+      (() => {
+        let theme = 'dark';
+        try {
+          if (localStorage.getItem('theme') === 'light') theme = 'light';
+        } catch {}
+        document.documentElement.dataset.theme = theme;
+        const m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute('content', theme === 'light' ? '#f7f8fa' : '#010102');
+      })();
+    </script>
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
