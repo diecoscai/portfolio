@@ -25,7 +25,7 @@ const links = [
       <span
         id="nav-pill"
         aria-hidden="true"
-        class="absolute left-0 top-1/2 -z-10 h-8 w-0 -translate-y-1/2 rounded-full bg-surface-2 opacity-0"
+        class="absolute left-0 top-1/2 -z-10 h-8 w-0 rounded-full bg-surface-2 opacity-0"
       ></span>
       {
         links.map((l) => (
@@ -140,7 +140,7 @@ const links = [
     }
     pill.style.opacity = '1';
     pill.style.width = `${link.offsetWidth}px`;
-    pill.style.transform = `translateX(${link.offsetLeft}px) translateY(-50%)`;
+    pill.style.transform = `translate(${link.offsetLeft}px, -50%)`;
   };
 
   document.addEventListener('nav:active', (e) => {
