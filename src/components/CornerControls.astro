@@ -1,0 +1,45 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+import { getLocale } from '../i18n';
+
+const locale = getLocale(Astro.currentLocale);
+
+const langClass = (active: boolean) =>
+  active
+    ? 'rounded-full bg-surface-2 px-2.5 py-1 font-mono text-xs text-ink'
+    : 'rounded-full px-2.5 py-1 font-mono text-xs text-ink-subtle transition-colors hover:text-ink';
+---
+
+<div
+  class="fixed right-4 top-4 z-50 flex h-12 items-center gap-0.5 rounded-full border border-hairline bg-canvas/70 px-1.5 shadow-lg shadow-black/10 backdrop-blur-md"
+>
+  <a
+    href="/"
+    data-lang-link
+    aria-label="English"
+    aria-current={locale === 'en' ? 'page' : undefined}
+    class={`hidden sm:block ${langClass(locale === 'en')}`}
+  >
+    EN
+  </a>
+  <a
+    href="/es/"
+    data-lang-link
+    aria-label="Español"
+    aria-current={locale === 'es' ? 'page' : undefined}
+    class={`hidden sm:block ${langClass(locale === 'es')}`}
+  >
+    ES
+  </a>
+  <span class="mx-1 hidden h-5 w-px bg-hairline sm:block" aria-hidden="true"></span>
+  <ThemeToggle />
+</div>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('[data-lang-link]').forEach((a) => {
+    const base = a.getAttribute('href') ?? '/';
+    a.addEventListener('click', () => {
+      if (location.hash) a.href = base + location.hash;
+    });
+  });
+</script>

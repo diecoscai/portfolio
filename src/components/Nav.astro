@@ -1,5 +1,4 @@
 ---
-import ThemeToggle from './ThemeToggle.astro';
 import { getLocale, t } from '../i18n';
 
 const locale = getLocale(Astro.currentLocale);
@@ -46,10 +45,6 @@ const links = [
       }
     </ul>
 
-    <span class="mx-1 hidden h-5 w-px bg-hairline md:block" aria-hidden="true"></span>
-
-    <ThemeToggle />
-
     <a
       href="#contact"
       class="hidden rounded-full bg-primary px-3.5 py-1.5 text-sm font-medium text-on-primary transition-colors hover:bg-primary-hover sm:block"
@@ -94,6 +89,31 @@ const links = [
         ))
       }
     </ul>
+
+    <div class="mt-1 flex items-center gap-1 border-t border-hairline px-3 py-3">
+      <a
+        href="/"
+        data-lang-link
+        aria-label="English"
+        aria-current={locale === 'en' ? 'page' : undefined}
+        class={locale === 'en'
+          ? 'rounded-full bg-surface-2 px-3 py-1.5 font-mono text-xs text-ink'
+          : 'rounded-full px-3 py-1.5 font-mono text-xs text-ink-subtle'}
+      >
+        EN
+      </a>
+      <a
+        href="/es/"
+        data-lang-link
+        aria-label="Español"
+        aria-current={locale === 'es' ? 'page' : undefined}
+        class={locale === 'es'
+          ? 'rounded-full bg-surface-2 px-3 py-1.5 font-mono text-xs text-ink'
+          : 'rounded-full px-3 py-1.5 font-mono text-xs text-ink-subtle'}
+      >
+        ES
+      </a>
+    </div>
   </div>
 </header>
 

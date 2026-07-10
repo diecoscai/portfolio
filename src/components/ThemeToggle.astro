@@ -1,8 +1,17 @@
+---
+import { getLocale, t } from '../i18n';
+
+const locale = getLocale(Astro.currentLocale);
+const theme = t(locale).theme;
+---
+
 <button
   id="theme-toggle"
   type="button"
-  class="grid h-10 w-10 place-items-center rounded-md border border-hairline text-ink-subtle transition-colors hover:text-ink"
-  aria-label="Switch to light theme"
+  class="grid h-9 w-9 place-items-center rounded-full text-ink-subtle transition-colors hover:text-ink"
+  aria-label={theme.toLight}
+  data-label-to-light={theme.toLight}
+  data-label-to-dark={theme.toDark}
 >
   <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <circle cx="12" cy="12" r="4"></circle>
@@ -32,7 +41,7 @@
     const root = document.documentElement;
     const meta = document.querySelector('meta[name="theme-color"]');
     const label = (theme: string) =>
-      `Switch to ${theme === 'light' ? 'dark' : 'light'} theme`;
+      theme === 'light' ? (btn.dataset.labelToDark ?? '') : (btn.dataset.labelToLight ?? '');
 
     btn.setAttribute('aria-label', label(root.dataset.theme ?? 'dark'));
 
