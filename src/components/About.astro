@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import { profile } from '../data/profile';
+import portrait from '../assets/about-diego.jpg';
 ---
 <section id="about" class="mx-auto max-w-6xl px-6 py-24 lg:px-8 lg:py-28">
   <div class="reveal">
@@ -9,30 +11,35 @@ import { profile } from '../data/profile';
     </h2>
   </div>
 
-  <div class="reveal mt-12 grid gap-12 lg:grid-cols-2">
+  <div class="reveal mt-12 grid items-start gap-10 lg:grid-cols-[340px_1fr] lg:gap-14">
+    <Image
+      src={portrait}
+      alt="Diego Costa working on his laptop"
+      widths={[340, 680, 1152]}
+      sizes="(min-width: 1024px) 340px, calc(100vw - 48px)"
+      class="w-full max-w-sm rounded-xl border border-hairline object-cover"
+    />
     <div class="space-y-5">
       {profile.summary.map((paragraph) => (
         <p class="leading-relaxed text-ink-muted">{paragraph}</p>
       ))}
     </div>
-
-    <div>
-      <div class="grid grid-cols-2 gap-4">
-        {profile.metrics.map((metric) => (
-          <div class="rounded-lg border border-hairline bg-surface-1 p-6">
-            <div class="font-mono text-3xl font-semibold text-ink lg:text-4xl">{metric.value}</div>
-            <div class="mt-2 text-sm text-ink-subtle">{metric.label}</div>
-          </div>
-        ))}
-      </div>
-
-      <ul class="mt-6 flex flex-wrap gap-2">
-        {profile.languages.map((language) => (
-          <li class="rounded-full border border-hairline px-3 py-1 font-mono text-sm text-ink-muted">
-            {language.name} · {language.level}
-          </li>
-        ))}
-      </ul>
-    </div>
   </div>
+
+  <div class="reveal mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4">
+    {profile.metrics.map((metric) => (
+      <div class="rounded-lg border border-hairline bg-surface-1 p-6">
+        <div class="font-mono text-3xl font-semibold text-ink lg:text-4xl">{metric.value}</div>
+        <div class="mt-2 text-sm text-ink-subtle">{metric.label}</div>
+      </div>
+    ))}
+  </div>
+
+  <ul class="reveal mt-6 flex flex-wrap gap-2">
+    {profile.languages.map((language) => (
+      <li class="rounded-full border border-hairline px-3 py-1 font-mono text-sm text-ink-muted">
+        {language.name} · {language.level}
+      </li>
+    ))}
+  </ul>
 </section>
