@@ -58,6 +58,9 @@ interface UIStrings {
     toLight: string;
     toDark: string;
   };
+  footer: {
+    builtWith: string;
+  };
 }
 
 export const ui: Localized<UIStrings> = {
@@ -114,6 +117,9 @@ export const ui: Localized<UIStrings> = {
       toLight: 'Switch to light theme',
       toDark: 'Switch to dark theme',
     },
+    footer: {
+      builtWith: 'Built with Astro · Tailwind',
+    },
   },
   es: {
     nav: {
@@ -168,6 +174,9 @@ export const ui: Localized<UIStrings> = {
     theme: {
       toLight: 'Cambiar a tema claro',
       toDark: 'Cambiar a tema oscuro',
+    },
+    footer: {
+      builtWith: 'Hecho con Astro · Tailwind',
     },
   },
 };

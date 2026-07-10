@@ -39,7 +39,7 @@ const langClass = (active: boolean) =>
   document.querySelectorAll<HTMLAnchorElement>('[data-lang-link]').forEach((a) => {
     const base = a.getAttribute('href') ?? '/';
     a.addEventListener('click', () => {
-      if (location.hash) a.href = base + location.hash;
+      a.href = location.hash ? base + location.hash : base;
     });
   });
 </script>
