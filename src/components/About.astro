@@ -1,26 +1,30 @@
 ---
 import { Image } from 'astro:assets';
 import { profile } from '../data/profile';
+import { getLocale, t } from '../i18n';
 import portrait from '../assets/about-diego.jpg';
+
+const locale = getLocale(Astro.currentLocale);
+const copy = t(locale);
 ---
 <section id="about" class="mx-auto max-w-6xl px-6 py-24 lg:px-8 lg:py-28">
   <div class="reveal">
-    <p class="font-mono text-xs uppercase tracking-[0.2em] text-ink-subtle">About</p>
+    <p class="font-mono text-xs uppercase tracking-[0.2em] text-ink-subtle">{copy.about.kicker}</p>
     <h2 class="mt-3 text-3xl font-semibold tracking-display-md text-ink lg:text-4xl">
-      Engineering AI systems, end to end.
+      {copy.about.heading}
     </h2>
   </div>
 
   <div class="reveal mt-12 grid items-start gap-10 lg:grid-cols-[340px_1fr] lg:gap-14">
     <Image
       src={portrait}
-      alt="Diego Costa working on his laptop"
+      alt={copy.about.portraitAlt}
       widths={[340, 680, 1152]}
       sizes="(min-width: 1024px) 340px, calc(100vw - 48px)"
       class="w-full max-w-sm rounded-xl border border-hairline object-cover"
     />
     <div class="space-y-5">
-      {profile.summary.map((paragraph) => (
+      {profile.summary[locale].map((paragraph) => (
         <p class="leading-relaxed text-ink-muted">{paragraph}</p>
       ))}
     </div>
@@ -30,7 +34,7 @@ import portrait from '../assets/about-diego.jpg';
     {profile.metrics.map((metric) => (
       <div class="rounded-lg border border-hairline bg-surface-1 p-6">
         <div class="font-mono text-3xl font-semibold text-ink lg:text-4xl">{metric.value}</div>
-        <div class="mt-2 text-sm text-ink-subtle">{metric.label}</div>
+        <div class="mt-2 text-sm text-ink-subtle">{metric.label[locale]}</div>
       </div>
     ))}
   </div>
@@ -38,7 +42,7 @@ import portrait from '../assets/about-diego.jpg';
   <ul class="reveal mt-6 flex flex-wrap gap-2">
     {profile.languages.map((language) => (
       <li class="rounded-full border border-hairline px-3 py-1 font-mono text-sm text-ink-muted">
-        {language.name} · {language.level}
+        {language.name[locale]} · {language.level[locale]}
       </li>
     ))}
   </ul>

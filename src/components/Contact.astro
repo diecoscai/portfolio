@@ -1,20 +1,23 @@
 ---
 import { profile } from '../data/profile';
+import { getLocale, t } from '../i18n';
 import Icon from './Icon.astro';
 
+const locale = getLocale(Astro.currentLocale);
+const copy = t(locale);
 const mailto = `mailto:${profile.email}`;
 ---
 
 <section id="contact" class="mx-auto max-w-6xl px-6 py-24 lg:px-8 lg:py-28">
   <div class="reveal panel-hairline mx-auto flex flex-col items-center rounded-2xl bg-surface-1 p-10 text-center lg:p-16">
-    <p class="font-mono text-xs uppercase tracking-[0.2em] text-ink-subtle">Contact</p>
+    <p class="font-mono text-xs uppercase tracking-[0.2em] text-ink-subtle">{copy.contact.kicker}</p>
 
     <h2 class="mt-5 max-w-2xl text-3xl font-semibold tracking-display-md text-ink sm:text-4xl lg:text-5xl">
-      Let&rsquo;s build something.
+      {copy.contact.heading}
     </h2>
 
     <p class="mt-4 max-w-md text-base text-ink-muted">
-      Have a project, a role, or an idea worth shipping? I&rsquo;m one message away.
+      {copy.contact.intro}
     </p>
 
     <a
@@ -30,7 +33,7 @@ const mailto = `mailto:${profile.email}`;
         href={mailto}
         class="inline-flex min-h-[44px] items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-medium text-on-primary transition-colors hover:bg-primary-hover"
       >
-        Email me
+        {copy.contact.emailMe}
         <Icon name="arrow-up-right" size={16} />
       </a>
     </div>
@@ -63,7 +66,7 @@ const mailto = `mailto:${profile.email}`;
             <span class="text-ink-tertiary" aria-hidden="true">&middot;</span>
             <span class="inline-flex items-center gap-1.5">
               <span class="h-2 w-2 rounded-full bg-success" aria-hidden="true" />
-              Available for work
+              {copy.contact.available}
             </span>
           </>
         )
