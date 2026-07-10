@@ -1,6 +1,10 @@
 ---
 import { profile } from '../data/profile';
+import { getLocale, t } from '../i18n';
 import Icon from './Icon.astro';
+
+const locale = getLocale(Astro.currentLocale);
+const copy = t(locale);
 ---
 
 <section id="top" class="relative flex min-h-[92vh] items-center">
@@ -13,7 +17,7 @@ import Icon from './Icon.astro';
               <span class="absolute inline-flex h-full w-full rounded-full bg-success opacity-75 motion-safe:animate-ping" />
               <span class="relative inline-flex h-2 w-2 rounded-full bg-success" />
             </span>
-            Available for work
+            {copy.hero.available}
           </span>
         </div>
       )
@@ -24,12 +28,12 @@ import Icon from './Icon.astro';
     >
       {profile.name}
       <span class="mt-2 block text-ink-muted">
-        building LLM agent systems &amp; full-stack products.
+        {copy.hero.headline}
       </span>
     </h1>
 
     <p class="reveal mt-6 max-w-2xl text-lg text-ink-muted lg:text-xl">
-      {profile.tagline}
+      {profile.tagline[locale]}
     </p>
 
     <div class="reveal mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -37,13 +41,13 @@ import Icon from './Icon.astro';
         href="#work"
         class="inline-flex min-h-[44px] items-center justify-center rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-on-primary transition-colors hover:bg-primary-hover"
       >
-        View work
+        {copy.hero.viewWork}
       </a>
       <a
         href="#contact"
         class="inline-flex min-h-[44px] items-center justify-center rounded-md border border-hairline bg-surface-1 px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-surface-2"
       >
-        Get in touch
+        {copy.hero.getInTouch}
       </a>
     </div>
 
@@ -58,7 +62,7 @@ import Icon from './Icon.astro';
 
   <a
     href="#about"
-    aria-label="Scroll to about"
+    aria-label={copy.hero.scrollToAbout}
     class="absolute inset-x-0 bottom-8 mx-auto hidden w-fit text-ink-tertiary transition-colors hover:text-ink-muted sm:flex"
   >
     <Icon name="arrow-down" size={20} class="motion-safe:animate-bounce" />
