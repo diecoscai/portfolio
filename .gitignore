@@ -33,3 +33,6 @@ awesome-design-md/
 
 # review artifacts
 reviews/
+
+# browser-session dumps (playwright / claude-in-chrome)
+.playwright-mcp/

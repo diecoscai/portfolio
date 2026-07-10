@@ -19,9 +19,9 @@ const mailto = `mailto:${profile.email}`;
 
     <a
       href={mailto}
-      class="group mt-8 inline-flex items-center gap-2.5 text-xl text-ink transition-colors hover:text-primary lg:text-2xl"
+      class="group mt-8 inline-flex items-center gap-2.5 text-xl text-ink transition-colors hover:text-accent lg:text-2xl"
     >
-      <Icon name="mail" size={22} class="text-ink-subtle transition-colors group-hover:text-primary" />
+      <Icon name="mail" size={22} class="text-ink-subtle transition-colors group-hover:text-accent" />
       {profile.email}
     </a>
 
@@ -60,7 +60,7 @@ const mailto = `mailto:${profile.email}`;
       {
         profile.available && (
           <>
-            <span class="text-ink-tertiary">&middot;</span>
+            <span class="text-ink-tertiary" aria-hidden="true">&middot;</span>
             <span class="inline-flex items-center gap-1.5">
               <span class="h-2 w-2 rounded-full bg-success" aria-hidden="true" />
               Available for work

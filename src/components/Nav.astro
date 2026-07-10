@@ -1,4 +1,6 @@
 ---
+import ThemeToggle from './ThemeToggle.astro';
+
 const links = [
   { id: 'about', label: 'About' },
   { id: 'work', label: 'Work' },
@@ -36,6 +38,7 @@ const links = [
     </ul>
 
     <div class="flex items-center gap-2">
+      <ThemeToggle />
       <a
         href="#contact"
         class="rounded-md bg-primary px-3.5 py-2 text-sm font-medium text-on-primary transition-colors hover:bg-primary-hover"
