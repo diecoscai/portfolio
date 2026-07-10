@@ -1,14 +1,18 @@
 ---
 import { skills } from '../data/skills';
+import { getLocale, t } from '../i18n';
+
+const locale = getLocale(Astro.currentLocale);
+const copy = t(locale);
 ---
 <section id="skills" class="mx-auto max-w-6xl px-6 py-24 lg:px-8 lg:py-28">
   <div class="reveal max-w-2xl">
-    <p class="font-mono text-xs uppercase tracking-[0.2em] text-ink-subtle">Stack</p>
+    <p class="font-mono text-xs uppercase tracking-[0.2em] text-ink-subtle">{copy.skills.kicker}</p>
     <h2 class="mt-3 text-3xl font-semibold tracking-display-md text-ink sm:text-4xl">
-      Tools I build with
+      {copy.skills.heading}
     </h2>
     <p class="mt-4 text-ink-muted">
-      The languages, frameworks, and platforms I reach for across the stack.
+      {copy.skills.intro}
     </p>
   </div>
 
@@ -17,7 +21,7 @@ import { skills } from '../data/skills';
       skills.map((group) => (
         <li class="rounded-lg border border-hairline bg-surface-1 p-6 transition-colors hover:bg-surface-2">
           <h3 class="font-mono text-xs uppercase tracking-wide text-ink-subtle">
-            {group.title}
+            {group.title[locale]}
           </h3>
           <ul role="list" class="mt-4 flex flex-wrap gap-2">
             {group.items.map((item) => (

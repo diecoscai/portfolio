@@ -1,11 +1,13 @@
+import type { Localized } from '../i18n';
+
 export interface SkillGroup {
-  title: string;
+  title: Localized;
   items: string[];
 }
 
 export const skills: SkillGroup[] = [
   {
-    title: 'AI & LLM Engineering',
+    title: { en: 'AI & LLM Engineering', es: 'Ingeniería de IA y LLMs' },
     items: [
       'OpenAI',
       'Anthropic Claude',
@@ -18,31 +20,31 @@ export const skills: SkillGroup[] = [
     ],
   },
   {
-    title: 'LLM Observability & Safety',
+    title: { en: 'LLM Observability & Safety', es: 'Observabilidad y Seguridad de LLMs' },
     items: ['Langfuse', 'Fiddler AI Guardrails', 'Evaluation pipelines', 'Model selection'],
   },
   {
-    title: 'Languages',
+    title: { en: 'Languages', es: 'Lenguajes' },
     items: ['TypeScript', 'JavaScript', 'Python', 'Ruby', 'C# (.NET)', 'SQL'],
   },
   {
-    title: 'Frontend',
+    title: { en: 'Frontend', es: 'Frontend' },
     items: ['React', 'Next.js', 'Astro', 'Redux', 'Tailwind CSS', 'Material-UI'],
   },
   {
-    title: 'Backend',
+    title: { en: 'Backend', es: 'Backend' },
     items: ['Node.js', 'Express', 'Ruby on Rails', 'REST APIs', 'Flowise'],
   },
   {
-    title: 'Data',
+    title: { en: 'Data', es: 'Datos' },
     items: ['PostgreSQL', 'MongoDB', 'Supabase', 'Vector databases', 'Redis · BullMQ'],
   },
   {
-    title: 'Cloud & DevOps',
+    title: { en: 'Cloud & DevOps', es: 'Cloud y DevOps' },
     items: ['AWS', 'Docker', 'GitHub Actions (OIDC)', 'Azure', 'Railway', 'Render', 'CI/CD'],
   },
   {
-    title: 'Testing',
+    title: { en: 'Testing', es: 'Testing' },
     items: ['Vitest', 'Playwright (E2E)', 'TDD', 'Regression testing'],
   },
 ];
