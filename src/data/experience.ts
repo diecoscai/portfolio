@@ -42,7 +42,7 @@ export const experience: Role[] = [
   {
     company: 'Entravision',
     title: 'Advertising Operator & Developer',
-    period: 'Jun 2018 — Dec 2023',
+    period: 'Jul 2017 — Dec 2023',
     location: 'Montevideo',
     summary:
       'Built and operated tools for a programmatic advertising (DSP) platform and interactive ad experiences, while training regional teams and driving process automation.',

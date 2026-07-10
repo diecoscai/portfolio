@@ -13,7 +13,7 @@ export const profile = {
     'Active open-source author of MCP servers and developer tooling. I operate through my own company, Caivanode SAS, exporting software to US clients.',
   ],
   metrics: [
-    { value: '5+', label: 'Years shipping software' },
+    { value: '3+', label: 'Years as a developer' },
     { value: '267', label: 'Merged pull requests' },
     { value: '70', label: 'Public PRs (open source)' },
     { value: '1', label: 'Published npm package' },
@@ -26,8 +26,8 @@ export const profile = {
     { label: 'GitHub', handle: '@diecoscai', href: 'https://github.com/diecoscai', icon: 'github' },
     {
       label: 'LinkedIn',
-      handle: 'diego-costa-caivano',
-      href: 'https://linkedin.com/in/diego-costa-caivano',
+      handle: 'diecoscai',
+      href: 'https://linkedin.com/in/diecoscai',
       icon: 'linkedin',
     },
     { label: 'Email', handle: 'diecoscai@gmail.com', href: 'mailto:diecoscai@gmail.com', icon: 'mail' },
