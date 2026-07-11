@@ -61,6 +61,9 @@ interface UIStrings {
   footer: {
     builtWith: string;
   };
+  corner: {
+    group: string;
+  };
 }
 
 export const ui: Localized<UIStrings> = {
@@ -120,6 +123,9 @@ export const ui: Localized<UIStrings> = {
     footer: {
       builtWith: 'Built with Astro · Tailwind',
     },
+    corner: {
+      group: 'Language and theme',
+    },
   },
   es: {
     nav: {
@@ -177,6 +183,9 @@ export const ui: Localized<UIStrings> = {
     },
     footer: {
       builtWith: 'Hecho con Astro · Tailwind',
+    },
+    corner: {
+      group: 'Idioma y tema',
     },
   },
 };

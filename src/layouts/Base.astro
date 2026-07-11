@@ -56,6 +56,8 @@ const ogImage = new URL('/og.png', siteBase).href;
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:site_name" content={profile.name} />
+    <meta property="og:locale" content={locale === 'es' ? 'es_ES' : 'en_US'} />
+    <meta property="og:locale:alternate" content={locale === 'es' ? 'en_US' : 'es_ES'} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />

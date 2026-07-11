@@ -90,10 +90,12 @@ const links = [
       }
     </ul>
 
-    <div class="mt-1 flex items-center gap-1 border-t border-hairline px-3 py-3">
+    <div class="mt-1 flex items-center gap-1 border-t border-hairline px-3 py-3 sm:hidden">
       <a
         href="/"
         data-lang-link
+        hreflang="en"
+        lang="en"
         aria-label="English"
         aria-current={locale === 'en' ? 'page' : undefined}
         class={locale === 'en'
@@ -105,6 +107,8 @@ const links = [
       <a
         href="/es/"
         data-lang-link
+        hreflang="es"
+        lang="es"
         aria-label="Español"
         aria-current={locale === 'es' ? 'page' : undefined}
         class={locale === 'es'
