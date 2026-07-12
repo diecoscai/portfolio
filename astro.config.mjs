@@ -10,6 +10,11 @@ export default defineConfig({
     locales: ['en', 'es'],
     routing: { prefixDefaultLocale: false },
   },
+  // The stylesheet is small enough that a separate request costs more than it
+  // saves: inlining it removes a render-blocking round trip on first paint.
+  build: {
+    inlineStylesheets: 'always',
+  },
   vite: {
     plugins: [tailwindcss()],
   },
