@@ -19,8 +19,8 @@ const copy = t(locale);
     <Image
       src={portrait}
       alt={copy.about.portraitAlt}
-      widths={[340, 680, 1152]}
-      sizes="(min-width: 1024px) 340px, calc(100vw - 48px)"
+      widths={[340, 384, 680, 768]}
+      sizes="(min-width: 1024px) 340px, min(100vw - 48px, 384px)"
       class="w-full max-w-sm rounded-xl border border-hairline object-cover"
     />
     <div class="space-y-5">

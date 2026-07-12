@@ -1,8 +1,12 @@
 @import 'tailwindcss' source('../');
 
-/* Fonts — Inter (Linear Display/Text substitute) + JetBrains Mono (Linear Mono substitute) */
-@import '@fontsource-variable/inter';
-@import '@fontsource-variable/jetbrains-mono';
+/*
+  Fonts — Inter (Linear Display/Text substitute) + JetBrains Mono (Linear Mono
+  substitute). The @font-face rules live in Base.astro rather than here: the
+  fontsource entrypoints ship all 7 subsets (cyrillic, greek, vietnamese, ...)
+  and we only ever render latin, and declaring them there lets us preload the
+  exact hashed woff2 URLs.
+*/
 
 /*
   Linear design system tokens (from awesome-design-md / linear.app DESIGN.md).
