@@ -36,3 +36,7 @@ reviews/
 
 # browser-session dumps (playwright / claude-in-chrome)
 .playwright-mcp/
+
+# lighthouse chrome-profile artifacts
+lighthouse.*/
+C:\\*

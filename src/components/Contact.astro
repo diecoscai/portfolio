@@ -6,6 +6,7 @@ import Icon from './Icon.astro';
 const locale = getLocale(Astro.currentLocale);
 const copy = t(locale);
 const mailto = `mailto:${profile.email}`;
+const links = profile.socials.filter((s) => s.icon !== 'mail');
 ---
 
 <section id="contact" class="mx-auto max-w-6xl px-6 py-24 lg:px-8 lg:py-28">
@@ -20,15 +21,7 @@ const mailto = `mailto:${profile.email}`;
       {copy.contact.intro}
     </p>
 
-    <a
-      href={mailto}
-      class="group mt-8 inline-flex items-center gap-2.5 text-xl text-ink transition-colors hover:text-accent lg:text-2xl"
-    >
-      <Icon name="mail" size={22} class="text-ink-subtle transition-colors group-hover:text-accent" />
-      {profile.email}
-    </a>
-
-    <div class="mt-8">
+    <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row">
       <a
         href={mailto}
         class="inline-flex min-h-[44px] items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-medium text-on-primary transition-colors hover:bg-primary-hover"
@@ -36,41 +29,42 @@ const mailto = `mailto:${profile.email}`;
         {copy.contact.emailMe}
         <Icon name="arrow-up-right" size={16} />
       </a>
+
+      <a
+        href={profile.cv}
+        class="inline-flex min-h-[44px] items-center gap-2 rounded-md border border-hairline px-6 py-3 text-sm font-medium text-ink transition-colors hover:border-hairline-strong hover:bg-surface-2"
+      >
+        {copy.contact.cv}
+      </a>
     </div>
+
+    <a
+      href={mailto}
+      class="mt-6 font-mono text-sm text-ink-subtle transition-colors hover:text-accent"
+    >
+      {profile.email}
+    </a>
 
     <ul class="mt-10 flex items-center justify-center gap-2">
       {
-        profile.socials.map((s) => {
-          const external = s.icon === 'github' || s.icon === 'linkedin';
-          return (
-            <li>
-              <a
-                href={s.href}
-                aria-label={s.label}
-                {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                class="flex h-11 w-11 items-center justify-center rounded-md border border-hairline text-ink-subtle transition-colors hover:bg-surface-2 hover:text-ink"
-              >
-                <Icon name={s.icon} size={18} />
-              </a>
-            </li>
-          );
-        })
+        links.map((s) => (
+          <li>
+            <a
+              href={s.href}
+              aria-label={s.label}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex h-11 w-11 items-center justify-center rounded-md border border-hairline text-ink-subtle transition-colors hover:bg-surface-2 hover:text-ink"
+            >
+              <Icon name={s.icon} size={18} />
+            </a>
+          </li>
+        ))
       }
     </ul>
 
-    <p class="mt-10 flex items-center justify-center gap-2 font-mono text-xs text-ink-subtle">
-      <span>{profile.location}</span>
-      {
-        profile.available && (
-          <>
-            <span class="text-ink-tertiary" aria-hidden="true">&middot;</span>
-            <span class="inline-flex items-center gap-1.5">
-              <span class="h-2 w-2 rounded-full bg-success" aria-hidden="true" />
-              {copy.contact.available}
-            </span>
-          </>
-        )
-      }
+    <p class="mt-10 max-w-sm font-mono text-xs leading-relaxed text-ink-subtle">
+      {copy.contact.timezone}
     </p>
   </div>
 </section>

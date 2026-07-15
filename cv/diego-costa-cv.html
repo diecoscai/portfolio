@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Diego Costa — AI Engineer</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 14mm 15mm;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        font-size: 9.6pt;
+        line-height: 1.45;
+        color: #16181d;
+      }
+      h1 {
+        margin: 0;
+        font-size: 20pt;
+        letter-spacing: -0.02em;
+      }
+      .role {
+        margin: 2px 0 0;
+        font-size: 10.5pt;
+        color: #454a54;
+      }
+      .contact {
+        margin: 6px 0 0;
+        font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+        font-size: 8.2pt;
+        color: #5b616e;
+      }
+      .contact a {
+        color: #5b616e;
+        text-decoration: none;
+      }
+      h2 {
+        margin: 16px 0 7px;
+        padding-bottom: 3px;
+        border-bottom: 1px solid #d9dce2;
+        font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+        font-size: 7.8pt;
+        font-weight: 600;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: #5b616e;
+      }
+      .lede {
+        margin: 10px 0 0;
+        font-size: 10pt;
+        line-height: 1.5;
+      }
+      .item {
+        margin-bottom: 9px;
+        break-inside: avoid;
+      }
+      .item-h {
+        font-weight: 600;
+      }
+      .item-h .where {
+        font-weight: 400;
+        color: #5b616e;
+      }
+      .item p {
+        margin: 2px 0 0;
+        color: #303540;
+      }
+      .job {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+        margin-top: 11px;
+      }
+      .job:first-of-type {
+        margin-top: 0;
+      }
+      .job h3 {
+        margin: 0;
+        font-size: 10pt;
+      }
+      .job .meta {
+        flex: none;
+        font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+        font-size: 8pt;
+        color: #5b616e;
+      }
+      .job-sub {
+        margin: 1px 0 4px;
+        font-size: 8.8pt;
+        color: #5b616e;
+      }
+      ul {
+        margin: 0;
+        padding-left: 14px;
+      }
+      li {
+        margin-bottom: 2.5px;
+      }
+      .stack {
+        display: grid;
+        grid-template-columns: 88px 1fr;
+        gap: 3px 10px;
+        font-size: 9.2pt;
+      }
+      .stack dt {
+        font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+        font-size: 8pt;
+        color: #5b616e;
+        padding-top: 1px;
+      }
+      .stack dd {
+        margin: 0;
+      }
+      .foot {
+        margin-top: 14px;
+        padding-top: 6px;
+        border-top: 1px solid #d9dce2;
+        font-size: 8.4pt;
+        color: #5b616e;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Diego Costa</h1>
+      <p class="role">AI Engineer — products with an LLM inside</p>
+      <p class="contact">
+        diecoscai@gmail.com · diegocosta.dev · github.com/diecoscai ·
+        linkedin.com/in/diecoscai · Montevideo, Uruguay (UTC-3 — full East Coast day, West Coast mornings)
+      </p>
+    </header>
+
+    <p class="lede">
+      Six years in ad operations, where I automated my own job until automating became the job.
+      Since mid-2025 I build products with an LLM inside, full time. The model is rarely the hard
+      part — the hard part is grounding it, isolating tenants, and being able to tell what it
+      actually did at 3am.
+    </p>
+
+    <h2>What I fixed, and why it was hard</h2>
+
+    <div class="item">
+      <p class="item-h">
+        The timeout that wasn't there <span class="where">— AnswerAgent</span>
+      </p>
+      <p>
+        A client's agent was cutting out at five seconds, intermittently. The timeout everyone had
+        configured was a no-op: the MCP subprocess was spawned without inheriting its environment,
+        so the setting never reached it. Behind that, the vectorstore ran one unindexed lookup per
+        result document, so under load the tail crossed the limit. Fixed both.
+      </p>
+    </div>
+
+    <div class="item">
+      <p class="item-h">
+        Users couldn't see their own documents <span class="where">— AnswerAgent</span>
+      </p>
+      <p>
+        Document chunks were being written with no owner id, so tenant-scoped queries matched
+        nothing. Added the safeguard at write time and a migration to backfill the orphaned rows.
+        Also put runtime guardrails on the public embed endpoint, which had been skipping them
+        because embed requests carry no user.
+      </p>
+    </div>
+
+    <div class="item">
+      <p class="item-h">
+        A manual nobody had written, and the tool that answers from it
+        <span class="where">— SBI Bids</span>
+      </p>
+      <p>
+        Documented the product screen by screen across all eight workflows, checked against the
+        code, then built the tool that answers "how do I do X" from that manual with a link to the
+        exact section — and says the manual doesn't cover it instead of inventing UI.
+      </p>
+    </div>
+
+    <div class="item">
+      <p class="item-h">
+        Alarms that had been silent since March <span class="where">— internal desktop product</span>
+      </p>
+      <p>
+        CPU, memory and disk alarms sat in INSUFFICIENT_DATA because nothing was installed to emit
+        the metrics. Built the monitoring, baked the agent into host setup, and moved the alarms
+        into CloudFormation. Also got the Electron app shipping again: signed builds had been
+        failing notarization for a month, and auto-update published one manifest for two
+        architectures, so arm64 users updated into the wrong binary.
+      </p>
+    </div>
+
+    <h2>Experience</h2>
+
+    <div class="job">
+      <div>
+        <h3>AI Engineer — AnswerAgentAI</h3>
+      </div>
+      <span class="meta">Jun 2025 — Present</span>
+    </div>
+    <p class="job-sub">
+      Remote · US team · contracting through Caivanode SAS · 180+ merged pull requests
+    </p>
+    <ul>
+      <li>
+        Three products in the same engagement: AnswerAgent, an agent orchestration platform
+        (Flowise, AWS) for enterprise clients; SBI Bids, a construction-bidding product on Azure;
+        and an internal Electron desktop product that shipped and was later discontinued.
+      </li>
+      <li>
+        On SBI Bids I write the business rules inside the Schedule-of-Values export — the Excel
+        workbook the whole bid rides on: insurance rates, GC/GR multipliers driven by project
+        duration, net-outs between trades, accepted alternates and exclusions — and I run the
+        acceptance pass the client signs off on.
+      </li>
+      <li>
+        On AnswerAgent I work on the parts that decide whether an agent can be trusted in
+        production: tenant isolation, MCP tooling, runtime guardrails, and tracing.
+      </li>
+    </ul>
+
+    <div class="job">
+      <div>
+        <h3>Full Stack Developer — Freelance</h3>
+      </div>
+      <span class="meta">2024 · 2 months</span>
+    </div>
+    <p class="job-sub">Montevideo · Remote</p>
+    <ul>
+      <li>
+        Built the Deal Management module for a DSP ad platform: Angular front end over a Node API
+        on MySQL — the screens where an ad-ops team sets up deals, and the endpoints behind them.
+      </li>
+      <li>
+        I had spent six years on the other side of a module like this one, filing the tickets
+        against it. That was the whole advantage.
+      </li>
+    </ul>
+
+    <div class="job">
+      <div>
+        <h3>Ad Operations · Programmatic — Entravision</h3>
+      </div>
+      <span class="meta">Jul 2017 — Dec 2023</span>
+    </div>
+    <p class="job-sub">Montevideo</p>
+    <ul>
+      <li>
+        Ran campaigns on a programmatic advertising platform, and automated my own part of the job
+        with custom scripts until automating became the work I wanted to do full time.
+      </li>
+      <li>Built the backend tooling the DSP ran on (Node.js, SQL).</li>
+      <li>Built the interactive ad units that shipped in Spotify campaigns (React, HTML5, CSS3).</li>
+      <li>
+        Was the person who explained the platform to the regional teams that had to use it — the
+        habit that later turned into writing the SBI Bids manual.
+      </li>
+    </ul>
+
+    <h2>Open source</h2>
+    <div class="item">
+      <p class="item-h">
+        hevy-mcp <span class="where">— npm: @diecoscai/hevy-mcp · v0.5.0 · MIT · ~340 downloads/mo</span>
+      </p>
+      <p>
+        A public MCP server exposing the Hevy fitness API as 23 strongly-typed tools over stdio for
+        Claude Desktop, Cursor and VS Code. Zod edge-validation with self-correcting errors,
+        dry-run-by-default writes, and schemas auto-generated from Hevy's OpenAPI spec via a weekly
+        workflow that opens PRs on drift.
+      </p>
+    </div>
+
+    <h2>Stack</h2>
+    <dl class="stack">
+      <dt>Daily</dt>
+      <dd>TypeScript · Node.js · React · PostgreSQL · MCP · RAG · Flowise · Langfuse · Fiddler · AWS</dd>
+      <dt>Shipped</dt>
+      <dd>Electron · Docker · Playwright · Vitest · GitHub Actions (OIDC) · Zod · Angular</dd>
+      <dt>Languages</dt>
+      <dd>Spanish (native) · English (working language — standups and calls, pull requests, docs, code)</dd>
+    </dl>
+
+    <h2>Education</h2>
+    <dl class="stack">
+      <dt>2022 — 2025</dt>
+      <dd>Programmer Analyst (Analista en Programación) — Universidad ORT Uruguay</dd>
+      <dt>2021</dt>
+      <dd>Web Development Diploma — CEIBAL · Jóvenes a Programar</dd>
+    </dl>
+
+    <p class="foot">Ask me about any number here. I’ll show you where it comes from.</p>
+  </body>
+</html>

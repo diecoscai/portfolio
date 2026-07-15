@@ -52,14 +52,15 @@ interface UIStrings {
     heading: string;
     intro: string;
     emailMe: string;
-    available: string;
+    cv: string;
+    timezone: string;
   };
   theme: {
     toLight: string;
     toDark: string;
   };
   footer: {
-    builtWith: string;
+    claim: string;
   };
 }
 
@@ -78,47 +79,52 @@ export const ui: Localized<UIStrings> = {
       menuClose: 'Close menu',
     },
     hero: {
-      available: 'Available for work',
-      headline: 'building LLM agent systems & full-stack products.',
+      available: 'Open to work',
+      headline: 'AI engineer for industries that still run on spreadsheets.',
       viewWork: 'View work',
       getInTouch: 'Get in touch',
       scrollToAbout: 'Scroll to about',
     },
     about: {
       kicker: 'About',
-      heading: 'Engineering AI systems, end to end.',
+      heading: 'I got here by automating my own job.',
       portraitAlt: 'Diego Costa working on his laptop',
     },
     work: {
       kicker: 'Work',
-      heading: 'Selected work',
+      heading: 'Some of what I’ve made',
       intro:
-        'A few things I’ve designed, shipped and maintained — from published tooling to product explorations.',
+        'Two products in production at one company, one published tool, and the thesis where I first put AI in front of someone who wasn’t me. SBI Bids is the client’s repo and stays private — that one I describe, I don’t show. The rest you can open.',
     },
     experience: {
       kicker: 'Experience',
       heading: "Where I've been building",
-      intro: 'A track record of shipping production AI systems and full-stack products.',
+      intro:
+        'Six years in ad operations, then software. The order matters — it’s why I know what a spreadsheet costs the person who has to fill it.',
       education: 'Education',
     },
     skills: {
       kicker: 'Stack',
       heading: 'Tools I build with',
-      intro: 'The languages, frameworks, and platforms I reach for across the stack.',
+      intro:
+        'Grouped by what I built with them, not by how well I think I know them. If something shows up in three places, that’s your answer on how often I use it.',
     },
     contact: {
       kicker: 'Contact',
-      heading: 'Let’s build something.',
-      intro: 'Have a project, a role, or an idea worth shipping? I’m one message away.',
+      heading: 'Looking for a product team.',
+      intro:
+        'Remote, on a team that ships — as a contractor through my own company, or as a full-time hire. Either way, write to me and ask me about anything above. It’s all checkable.',
       emailMe: 'Email me',
-      available: 'Available for work',
+      cv: 'CV (PDF)',
+      timezone:
+        'Montevideo · UTC-3 — one to two hours ahead of New York depending on the season: the full East Coast day, and West Coast mornings through early afternoon',
     },
     theme: {
       toLight: 'Switch to light theme',
       toDark: 'Switch to dark theme',
     },
     footer: {
-      builtWith: 'Built with Astro · Tailwind',
+      claim: 'Ask me about any number on this page. I’ll show you where it comes from.',
     },
   },
   es: {
@@ -128,55 +134,59 @@ export const ui: Localized<UIStrings> = {
       experience: 'Experiencia',
       skills: 'Stack',
       contact: 'Contacto',
-      cta: 'Escribime',
+      cta: 'Hablemos',
       ariaMain: 'Principal',
       ariaHome: 'Diego Costa — inicio',
       menuOpen: 'Abrir menú',
       menuClose: 'Cerrar menú',
     },
     hero: {
-      available: 'Disponible para trabajar',
-      headline: 'construyendo sistemas de agentes LLM y productos full-stack.',
+      available: 'Disponible',
+      headline: 'Ingeniero de IA para industrias que todavía se manejan con planillas.',
       viewWork: 'Ver trabajo',
-      getInTouch: 'Escribime',
-      scrollToAbout: 'Ir a sobre mí',
+      getInTouch: 'Hablemos',
+      scrollToAbout: 'Ir a la sección Sobre mí',
     },
     about: {
       kicker: 'Sobre mí',
-      heading: 'Ingeniería de sistemas de IA, de punta a punta.',
+      heading: 'Llegué acá automatizando mi propio trabajo.',
       portraitAlt: 'Diego Costa trabajando en su laptop',
     },
     work: {
       kicker: 'Trabajo',
-      heading: 'Trabajo seleccionado',
+      heading: 'Algunas cosas que hice',
       intro:
-        'Algunas cosas que diseñé, lancé y mantengo — desde herramientas publicadas hasta exploraciones de producto.',
+        'Dos plataformas de clientes en producción, una herramienta publicada y la tesis donde puse IA por primera vez frente a alguien que no fuera yo. SBI Bids es el repo del cliente y se queda privado — ese lo cuento, no lo muestro. Los demás los podés abrir.',
     },
     experience: {
       kicker: 'Experiencia',
-      heading: 'Dónde estuve construyendo',
-      intro: 'Una trayectoria entregando sistemas de IA en producción y productos full-stack.',
+      heading: 'Por dónde pasé',
+      intro:
+        'Seis años en ad operations y después software. El orden importa: por eso sé lo que le cuesta una planilla al que la tiene que llenar.',
       education: 'Educación',
     },
     skills: {
       kicker: 'Stack',
-      heading: 'Herramientas con las que construyo',
-      intro: 'Los lenguajes, frameworks y plataformas que uso en todo el stack.',
+      heading: 'Con qué trabajo',
+      intro:
+        'Agrupadas por lo que hice con ellas, no por lo bien que creo que las manejo. Si algo aparece en tres lugares, ya sabés cuánto lo uso.',
     },
     contact: {
       kicker: 'Contacto',
-      heading: 'Construyamos algo.',
+      heading: 'Busco un equipo de producto.',
       intro:
-        '¿Tenés un proyecto, un rol o una idea que valga la pena lanzar? Estoy a un mensaje de distancia.',
-      emailMe: 'Escribime un mail',
-      available: 'Disponible para trabajar',
+        'Remoto, en un equipo que saca producto — como contractor a través de mi empresa, o en relación de dependencia. Como sea, escribime y preguntame por cualquier cosa de acá arriba: todo se puede verificar.',
+      emailMe: 'Escribime',
+      cv: 'CV (PDF)',
+      timezone:
+        'Montevideo · UTC-3 — una o dos horas adelante de Nueva York según la época: la jornada entera de la costa este, y la mañana de la costa oeste',
     },
     theme: {
       toLight: 'Cambiar a tema claro',
       toDark: 'Cambiar a tema oscuro',
     },
     footer: {
-      builtWith: 'Hecho con Astro · Tailwind',
+      claim: 'Preguntame por cualquier número de esta página y te muestro de dónde sale.',
     },
   },
 };
