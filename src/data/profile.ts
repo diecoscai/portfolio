@@ -37,13 +37,6 @@ export const profile = {
         es: 'Productos que salieron a producción',
       },
     },
-    {
-      value: '180+',
-      label: {
-        en: 'Merged pull requests at work',
-        es: 'Pull requests mergeados en el trabajo',
-      },
-    },
     { value: '23', label: { en: 'MCP tools published on npm', es: 'Tools MCP publicadas en npm' } },
     {
       value: '6',
