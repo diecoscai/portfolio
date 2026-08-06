@@ -62,6 +62,9 @@ interface UIStrings {
   footer: {
     claim: string;
   };
+  corner: {
+    group: string;
+  };
 }
 
 export const ui: Localized<UIStrings> = {
@@ -126,6 +129,9 @@ export const ui: Localized<UIStrings> = {
     footer: {
       claim: 'Ask me about any number on this page. I’ll show you where it comes from.',
     },
+    corner: {
+      group: 'Language and theme',
+    },
   },
   es: {
     nav: {
@@ -187,6 +193,9 @@ export const ui: Localized<UIStrings> = {
     },
     footer: {
       claim: 'Preguntame por cualquier número de esta página y te muestro de dónde sale.',
+    },
+    corner: {
+      group: 'Idioma y tema',
     },
   },
 };
